@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Wallet View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="WalletViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="WalletViewController" customModule="Tangle" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8w3-Cm-axT">
+                                <rect key="frame" x="0.0" y="210" width="600" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jB-XA-THr">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="rjs-PH-bDo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Receive">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vD-FY-8vN">
+                                        <rect key="frame" x="300" y="0.0" width="300" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="g7I-7P-XZu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Jy-CV-ARV">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="210"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoinlogo" translatesAutoresizingMaskIntoConstraints="NO" id="XHM-YX-Gzv">
+                                        <rect key="frame" x="12" y="42" width="125" height="125"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="125" id="EeN-kX-Djv"/>
+                                            <constraint firstAttribute="height" constant="125" id="xAU-dS-Ztg"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="fYU-KM-Zmc">
+                                        <rect key="frame" x="177" y="70" width="150" height="70"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Balance:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MU-Xk-Yls">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="fDh-0Y-Ioq"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ZOR-MP-xBu">
+                                                <rect key="frame" x="32" y="32" width="86" height="39"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="฿" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBt-3Z-sJo">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="39"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyf-yI-TUQ">
+                                                        <rect key="frame" x="24" y="0.0" width="62" height="39"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="ZOR-MP-xBu" firstAttribute="leading" secondItem="8MU-Xk-Yls" secondAttribute="trailing" constant="8" symbolic="YES" id="aYD-vz-rRI"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="aYD-vz-rRI"/>
+                                            </mask>
+                                        </variation>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2156862745" green="0.51764705879999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="fYU-KM-Zmc" firstAttribute="leading" secondItem="XHM-YX-Gzv" secondAttribute="trailing" priority="750" constant="40" id="BuF-N7-Udz"/>
+                                    <constraint firstAttribute="height" constant="210" id="Dgy-Bl-0NR"/>
+                                    <constraint firstItem="XHM-YX-Gzv" firstAttribute="centerY" secondItem="6Jy-CV-ARV" secondAttribute="centerY" id="gif-Za-9fh"/>
+                                    <constraint firstItem="XHM-YX-Gzv" firstAttribute="leading" secondItem="6Jy-CV-ARV" secondAttribute="leading" constant="12" id="izc-Ub-Zdp"/>
+                                    <constraint firstItem="fYU-KM-Zmc" firstAttribute="centerY" secondItem="XHM-YX-Gzv" secondAttribute="centerY" id="k2p-ny-4SD"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fYU-KM-Zmc" secondAttribute="trailing" constant="12" id="xjD-99-LJG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8w3-Cm-axT" secondAttribute="trailing" id="022-Ad-6uM"/>
+                            <constraint firstItem="6Jy-CV-ARV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="6e9-3D-6jK"/>
+                            <constraint firstAttribute="trailing" secondItem="6Jy-CV-ARV" secondAttribute="trailing" id="IZY-g0-zdV"/>
+                            <constraint firstItem="8w3-Cm-axT" firstAttribute="top" secondItem="6Jy-CV-ARV" secondAttribute="bottom" id="Mdp-UD-7z0"/>
+                            <constraint firstItem="8w3-Cm-axT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XA2-LO-mXH"/>
+                            <constraint firstItem="6Jy-CV-ARV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qls-Sd-vg9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="accountTitleBalanceLabel" destination="8MU-Xk-Yls" id="zTq-VD-P8u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="309" y="315"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bitcoinlogo" width="512" height="512"/>
+    </resources>
+</document>

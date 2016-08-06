@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Master Key-->
+        <scene sceneID="PRz-aO-Vlj">
+            <objects>
+                <viewController storyboardIdentifier="GenerateMasterKeyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="o3g-kh-y23" customClass="GenerateMasterKeyViewController" customModule="Tangle" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RMc-Tb-WZW"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Nq-If-HFQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O4c-ZO-nMw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write down your Master Phrase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNH-TT-dyQ">
+                                <rect key="frame" x="20" y="50" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Double check that you wrote it down correctly." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBG-RE-v3T">
+                                <rect key="frame" x="28" y="121" width="544" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biK-69-dCK">
+                                <rect key="frame" x="20" y="192" width="560" height="59.5"/>
+                                <string key="text">angry sound benefit scare daughter rough shine balcony naive winner mixed endorse lumber fruit paper scale alert neither alarm size mind control public pave</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybE-xO-Zod">
+                                <rect key="frame" x="150" y="445" width="300" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8hb-z8-qCt"/>
+                                    <constraint firstAttribute="width" constant="300" id="XXf-Oa-nCI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Create Wallet">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createWalletButtonTapped:" destination="o3g-kh-y23" eventType="touchUpInside" id="FBg-jF-Ght"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jNH-TT-dyQ" firstAttribute="top" secondItem="RMc-Tb-WZW" secondAttribute="bottom" constant="30" id="8Id-ah-oIn"/>
+                            <constraint firstItem="biK-69-dCK" firstAttribute="leading" secondItem="O4c-ZO-nMw" secondAttribute="leadingMargin" id="ADR-Q9-tCx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="biK-69-dCK" secondAttribute="trailing" id="Ilc-Qz-7gN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TBG-RE-v3T" secondAttribute="trailing" constant="8" id="MyP-EO-DRv"/>
+                            <constraint firstItem="biK-69-dCK" firstAttribute="top" secondItem="TBG-RE-v3T" secondAttribute="bottom" constant="50" id="Pyy-eK-in4"/>
+                            <constraint firstItem="TBG-RE-v3T" firstAttribute="leading" secondItem="O4c-ZO-nMw" secondAttribute="leadingMargin" constant="8" id="QKA-Lm-rSV"/>
+                            <constraint firstItem="jNH-TT-dyQ" firstAttribute="leading" secondItem="O4c-ZO-nMw" secondAttribute="leadingMargin" id="Wqi-X3-HKC"/>
+                            <constraint firstItem="TBG-RE-v3T" firstAttribute="top" secondItem="jNH-TT-dyQ" secondAttribute="bottom" constant="50" id="b3i-lx-u86"/>
+                            <constraint firstItem="1Nq-If-HFQ" firstAttribute="top" secondItem="ybE-xO-Zod" secondAttribute="bottom" constant="125" id="hSt-qn-tn4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jNH-TT-dyQ" secondAttribute="trailing" id="iFK-k2-u0n"/>
+                            <constraint firstItem="ybE-xO-Zod" firstAttribute="centerX" secondItem="O4c-ZO-nMw" secondAttribute="centerX" id="n9a-c8-8uM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Master Key" id="ZaS-0O-i8D">
+                        <barButtonItem key="rightBarButtonItem" title="Help" id="8Tb-hV-PZV"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="createWalletButton" destination="ybE-xO-Zod" id="vA6-Dv-S0y"/>
+                        <outlet property="mnemonicWordsLabel" destination="biK-69-dCK" id="ebc-cE-lay"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4bw-YE-beG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1511" y="281"/>
+        </scene>
+    </scenes>
+</document>
