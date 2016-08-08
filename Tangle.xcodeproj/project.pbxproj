@@ -16,6 +16,8 @@
 		E256B8491D5677F2009089B8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256B8441D5677F2009089B8 /* OnboardingViewController.swift */; };
 		E256B84A1D5677F2009089B8 /* RootOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256B8451D5677F2009089B8 /* RootOnboardingViewController.swift */; };
 		E256B84C1D56780E009089B8 /* CreateWallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E256B84B1D56780E009089B8 /* CreateWallet.storyboard */; };
+		E28137901D5913B60034027D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281378F1D5913B60034027D /* UIColor+Extensions.swift */; };
+		E28137921D591EFB0034027D /* CustomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28137911D591EFB0034027D /* CustomAnimation.swift */; };
 		E2C8B23E1D4FE8B700B71642 /* GenerateMasterKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8B23B1D4FE8B700B71642 /* GenerateMasterKeyViewController.swift */; };
 		E2C8B2411D4FE8CB00B71642 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8B2401D4FE8CB00B71642 /* WalletViewController.swift */; };
 		E2C8B2461D4FE8EA00B71642 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2C8B2421D4FE8EA00B71642 /* LaunchScreen.storyboard */; };
@@ -48,6 +50,8 @@
 		E256B8441D5677F2009089B8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingViewController.swift; path = Onboarding/OnboardingViewController.swift; sourceTree = "<group>"; };
 		E256B8451D5677F2009089B8 /* RootOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootOnboardingViewController.swift; path = Onboarding/RootOnboardingViewController.swift; sourceTree = "<group>"; };
 		E256B84B1D56780E009089B8 /* CreateWallet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreateWallet.storyboard; path = "Create Wallet/CreateWallet.storyboard"; sourceTree = "<group>"; };
+		E281378F1D5913B60034027D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extensions.swift"; path = "Extensions/UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		E28137911D591EFB0034027D /* CustomAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnimation.swift; sourceTree = "<group>"; };
 		E2C8B23B1D4FE8B700B71642 /* GenerateMasterKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenerateMasterKeyViewController.swift; path = "Create Wallet/GenerateMasterKeyViewController.swift"; sourceTree = "<group>"; };
 		E2C8B2401D4FE8CB00B71642 /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletViewController.swift; path = Wallet/WalletViewController.swift; sourceTree = "<group>"; };
 		E2C8B2431D4FE8EA00B71642 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Supporting Files/Base.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				E227A3001D4D4E16005FD298 /* Onboarding */,
 				E227A30B1D4D5C08005FD298 /* Create Wallet */,
 				E227A3091D4D4E5D005FD298 /* Wallet */,
+				E281378E1D59139E0034027D /* Extensions */,
 				E227A30A1D4D4E6D005FD298 /* Supporting Files */,
 			);
 			path = Tangle;
@@ -161,6 +166,15 @@
 				E2402BE51D51104F00FF52E4 /* CoreBitcoin.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E281378E1D59139E0034027D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E28137911D591EFB0034027D /* CustomAnimation.swift */,
+				E281378F1D5913B60034027D /* UIColor+Extensions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,7 +283,9 @@
 			files = (
 				E2C8B2411D4FE8CB00B71642 /* WalletViewController.swift in Sources */,
 				E256B8491D5677F2009089B8 /* OnboardingViewController.swift in Sources */,
+				E28137921D591EFB0034027D /* CustomAnimation.swift in Sources */,
 				E256B8461D5677F2009089B8 /* MasterKeyWarningViewController.swift in Sources */,
+				E28137901D5913B60034027D /* UIColor+Extensions.swift in Sources */,
 				E227A2E11D4D4DC1005FD298 /* AppDelegate.swift in Sources */,
 				E2C8B23E1D4FE8B700B71642 /* GenerateMasterKeyViewController.swift in Sources */,
 				E256B8481D5677F2009089B8 /* OnboardingModelController.swift in Sources */,
@@ -404,6 +420,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CoreBitcoin/binaries/iOS",
@@ -424,6 +441,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CoreBitcoin/binaries/iOS",

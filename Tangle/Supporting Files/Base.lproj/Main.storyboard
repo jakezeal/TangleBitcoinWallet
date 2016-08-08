@@ -18,42 +18,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8w3-Cm-axT">
-                                <rect key="frame" x="0.0" y="210" width="600" height="70"/>
+                                <rect key="frame" x="0.0" y="210" width="600" height="55"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jB-XA-THr">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="70"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="55"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="rjs-PH-bDo"/>
+                                            <constraint firstAttribute="height" constant="55" id="rjs-PH-bDo"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Receive">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="receiveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TTB-nd-ToM"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vD-FY-8vN">
-                                        <rect key="frame" x="300" y="0.0" width="300" height="70"/>
+                                        <rect key="frame" x="300" y="0.0" width="300" height="55"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="g7I-7P-XZu"/>
+                                            <constraint firstAttribute="height" constant="55" id="g7I-7P-XZu"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Send">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="sendButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SdP-kd-GxE"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Jy-CV-ARV">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="210"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoinlogo" translatesAutoresizingMaskIntoConstraints="NO" id="XHM-YX-Gzv">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoinlogo" translatesAutoresizingMaskIntoConstraints="NO" id="XHM-YX-Gzv">
                                         <rect key="frame" x="12" y="42" width="125" height="125"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="125" id="EeN-kX-Djv"/>
                                             <constraint firstAttribute="height" constant="125" id="xAU-dS-Ztg"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="fYU-KM-Zmc">
-                                        <rect key="frame" x="177" y="70" width="150" height="70"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="fYU-KM-Zmc">
+                                        <rect key="frame" x="177" y="69.5" width="150" height="71"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Balance:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MU-Xk-Yls">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="20"/>
@@ -102,19 +108,99 @@
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fYU-KM-Zmc" secondAttribute="trailing" constant="12" id="xjD-99-LJG"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBk-ZV-rBu">
+                                <rect key="frame" x="0.0" y="265" width="600" height="335"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QRCode" translatesAutoresizingMaskIntoConstraints="NO" id="BSH-Or-Cm8">
+                                        <rect key="frame" x="198" y="30" width="205" height="205"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="205" id="9nq-Nj-ha9"/>
+                                            <constraint firstAttribute="width" constant="205" id="s9N-K7-Dqp"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovm-z5-1UJ">
+                                        <rect key="frame" x="278" y="255" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="7ZS-z5-3zs"/>
+                                            <constraint firstAttribute="height" constant="44" id="Lt3-dm-8ks"/>
+                                        </constraints>
+                                        <state key="normal" image="refresh"/>
+                                        <connections>
+                                            <action selector="refreshButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HKT-98-X78"/>
+                                        </connections>
+                                    </button>
+                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="address" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="51Q-Yk-AIg">
+                                        <rect key="frame" x="172" y="104" width="255" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="255" id="0K7-Qd-Lq1"/>
+                                            <constraint firstAttribute="height" constant="44" id="Ggs-EK-EnG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVV-YQ-KEK">
+                                        <rect key="frame" x="172" y="168" width="255" height="44"/>
+                                        <color key="backgroundColor" red="0.23137254900000001" green="0.52156862749999999" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="255" id="LGf-fT-q90"/>
+                                            <constraint firstAttribute="height" constant="44" id="mnU-u7-qEm"/>
+                                        </constraints>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="฿" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kOT-21-j6Z">
+                                        <rect key="frame" x="172" y="40" width="255" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="M8g-1j-V4X"/>
+                                            <constraint firstAttribute="width" constant="255" id="pp4-KE-sKx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="sVV-YQ-KEK" firstAttribute="top" secondItem="51Q-Yk-AIg" secondAttribute="bottom" constant="20" id="1Zv-ev-N4v"/>
+                                    <constraint firstItem="BSH-Or-Cm8" firstAttribute="top" secondItem="bBk-ZV-rBu" secondAttribute="top" constant="30" id="92K-n8-FaB"/>
+                                    <constraint firstItem="kOT-21-j6Z" firstAttribute="top" secondItem="bBk-ZV-rBu" secondAttribute="top" constant="40" id="C2h-2E-u3l"/>
+                                    <constraint firstItem="51Q-Yk-AIg" firstAttribute="top" secondItem="kOT-21-j6Z" secondAttribute="bottom" constant="20" id="P4u-h3-ht2"/>
+                                    <constraint firstItem="51Q-Yk-AIg" firstAttribute="centerX" secondItem="bBk-ZV-rBu" secondAttribute="centerX" id="TMc-LK-tL9"/>
+                                    <constraint firstItem="ovm-z5-1UJ" firstAttribute="centerX" secondItem="bBk-ZV-rBu" secondAttribute="centerX" id="UH2-Lp-HFE"/>
+                                    <constraint firstItem="sVV-YQ-KEK" firstAttribute="centerX" secondItem="bBk-ZV-rBu" secondAttribute="centerX" id="UQ0-99-nOO"/>
+                                    <constraint firstItem="BSH-Or-Cm8" firstAttribute="centerX" secondItem="bBk-ZV-rBu" secondAttribute="centerX" id="tc2-pM-dhg"/>
+                                    <constraint firstItem="ovm-z5-1UJ" firstAttribute="top" secondItem="BSH-Or-Cm8" secondAttribute="bottom" constant="20" id="ylh-oF-gmv"/>
+                                    <constraint firstItem="kOT-21-j6Z" firstAttribute="centerX" secondItem="bBk-ZV-rBu" secondAttribute="centerX" id="zgg-C8-MYP"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="8w3-Cm-axT" secondAttribute="trailing" id="022-Ad-6uM"/>
+                            <constraint firstItem="bBk-ZV-rBu" firstAttribute="top" secondItem="8w3-Cm-axT" secondAttribute="bottom" id="3Bp-OS-64F"/>
                             <constraint firstItem="6Jy-CV-ARV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="6e9-3D-6jK"/>
                             <constraint firstAttribute="trailing" secondItem="6Jy-CV-ARV" secondAttribute="trailing" id="IZY-g0-zdV"/>
                             <constraint firstItem="8w3-Cm-axT" firstAttribute="top" secondItem="6Jy-CV-ARV" secondAttribute="bottom" id="Mdp-UD-7z0"/>
                             <constraint firstItem="8w3-Cm-axT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XA2-LO-mXH"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bBk-ZV-rBu" secondAttribute="bottom" id="bPF-Xl-fvQ"/>
+                            <constraint firstAttribute="trailing" secondItem="bBk-ZV-rBu" secondAttribute="trailing" id="dbr-YG-toy"/>
                             <constraint firstItem="6Jy-CV-ARV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qls-Sd-vg9"/>
+                            <constraint firstItem="bBk-ZV-rBu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yug-CU-ahE"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="accountBalanceLabel" destination="vyf-yI-TUQ" id="uzN-sO-sN8"/>
                         <outlet property="accountTitleBalanceLabel" destination="8MU-Xk-Yls" id="zTq-VD-P8u"/>
+                        <outlet property="actionStackView" destination="8w3-Cm-axT" id="xQx-BO-cGg"/>
+                        <outlet property="actionView" destination="bBk-ZV-rBu" id="epD-zb-W8B"/>
+                        <outlet property="bitcoinLogoImageView" destination="XHM-YX-Gzv" id="TfN-py-q5W"/>
+                        <outlet property="forwardAddressTextField" destination="51Q-Yk-AIg" id="KsZ-ct-Ci5"/>
+                        <outlet property="qrCodeImageView" destination="BSH-Or-Cm8" id="P9W-R0-hY1"/>
+                        <outlet property="receiveButton" destination="0jB-XA-THr" id="Su0-df-7Ui"/>
+                        <outlet property="refreshButton" destination="ovm-z5-1UJ" id="pxM-Ml-aak"/>
+                        <outlet property="sendAmountTextField" destination="kOT-21-j6Z" id="Vkx-0g-PLo"/>
+                        <outlet property="sendBitcoinButton" destination="sVV-YQ-KEK" id="8VU-yc-qXj"/>
+                        <outlet property="sendButton" destination="4vD-FY-8vN" id="shP-xG-wYL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -123,6 +209,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="QRCode" width="159" height="159"/>
         <image name="bitcoinlogo" width="512" height="512"/>
+        <image name="refresh" width="512" height="512"/>
     </resources>
 </document>
