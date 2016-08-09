@@ -65,15 +65,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="700"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pnc-ed-HyI">
-                                <rect key="frame" x="279" y="551.5" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="p3l-vj-SwI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RY4-TL-oBL">
                                 <rect key="frame" x="150" y="150" width="300" height="275"/>
                                 <constraints>
@@ -106,6 +97,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pnc-ed-HyI">
+                                <rect key="frame" x="279" y="551" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="p3l-vj-SwI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -117,7 +117,7 @@
                             <constraint firstItem="RY4-TL-oBL" firstAttribute="top" secondItem="B11-ve-ZWl" secondAttribute="bottom" constant="130" id="XPb-tM-BJQ"/>
                             <constraint firstItem="Moc-aL-yCa" firstAttribute="centerX" secondItem="6G0-cV-nEO" secondAttribute="centerX" id="e5K-TJ-kTE"/>
                             <constraint firstItem="Pnc-ed-HyI" firstAttribute="centerX" secondItem="6G0-cV-nEO" secondAttribute="centerX" id="nHG-Bn-tAt"/>
-                            <constraint firstItem="VQ2-VP-upo" firstAttribute="top" secondItem="Pnc-ed-HyI" secondAttribute="bottom" priority="750" constant="150" id="pfU-uO-yO2"/>
+                            <constraint firstItem="VQ2-VP-upo" firstAttribute="top" secondItem="e9G-zx-G6d" secondAttribute="bottom" constant="77.5" id="r1o-6d-t7T"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

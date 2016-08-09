@@ -27,12 +27,20 @@ class GenerateMasterKeyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareCreateWalletButton()
-        
+        createWallet()
     }
     
     // MARK: - Preparations
     func prepareCreateWalletButton() {
         createWalletButton.layer.cornerRadius = 5.0
+    }
+    
+    func createWallet() {
+        
+        guard appDelegate.wallet == nil else { return }
+        
+        let seed = BTCRandomDataWithLength(32)
+        appDelegate.wallet = Wallet(generateKeyInWalletWithEntropySeed: seed, andPassword: "")
     }
     
     // MARK: - Helper Methods

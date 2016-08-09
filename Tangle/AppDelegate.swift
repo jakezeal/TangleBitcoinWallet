@@ -14,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Properties
     var window: UIWindow?
     
+    var wallet: Wallet?
+    
     // MARK: - Did Finish Launching With Options
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -27,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let startViewController: UIViewController
         
-        if false {
+        if true {
             // If it is the user's first time on application, show onboarding
             let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
             startViewController = storyboard.instantiateViewControllerWithIdentifier("RootOnboardingViewController") as! RootOnboardingViewController
