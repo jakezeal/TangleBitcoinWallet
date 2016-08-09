@@ -148,9 +148,7 @@ class WalletViewController: UIViewController {
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        
         view.bounds.origin.y = 0
-        
     }
     
     

@@ -26,22 +26,30 @@ class GenerateMasterKeyViewController: UIViewController {
     // MARK: - View Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        createWalletWithSeed()
         prepareCreateWalletButton()
-        createWallet()
+        prepareMnemonicWordsLabel()
+        
     }
     
     // MARK: - Preparations
-    func prepareCreateWalletButton() {
-        createWalletButton.layer.cornerRadius = 5.0
-    }
-    
-    func createWallet() {
+    func createWalletWithSeed() {
         
         guard appDelegate.wallet == nil else { return }
         
         let seed = BTCRandomDataWithLength(32)
         appDelegate.wallet = Wallet(generateKeyInWalletWithEntropySeed: seed, andPassword: "")
     }
+
+    
+    func prepareCreateWalletButton() {
+        createWalletButton.layer.cornerRadius = 5.0
+    }
+    
+    func prepareMnemonicWordsLabel() {
+        mnemonicWordsLabel.text = appDelegate.wallet?.mnemonicString
+    }
+    
     
     // MARK: - Helper Methods
     func transitionToWalletViewController() {
