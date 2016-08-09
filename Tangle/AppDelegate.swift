@@ -62,5 +62,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    func applicationDidBecomeActive(application: UIApplication) {
+        // TODO: Pull information from API based on stored keys and update balance
+    }
+    
+    // Disable extensions such as custom keyboards for security purposes
+    func application(application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: String) -> Bool {
+        return false
+    }
+    
 }
 

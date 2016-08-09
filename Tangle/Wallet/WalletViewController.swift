@@ -70,8 +70,9 @@ class WalletViewController: UIViewController {
         prepareRefreshShakeAnimation()
         prepareSendBitcoinButton()
         prepareForwardAddressTextField()
-        
         prepareNSNotificationCenterObserversForKeyboard()
+        
+        let network = BTCNetwork(name: "testnet")
     }
     
     // MARK: - Preparations

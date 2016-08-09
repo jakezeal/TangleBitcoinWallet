@@ -36,7 +36,7 @@ class GenerateMasterKeyViewController: UIViewController {
     func createWalletWithSeed() {
         
         guard appDelegate.wallet == nil else { return }
-        
+    
         let seed = BTCRandomDataWithLength(32)
         appDelegate.wallet = Wallet(generateKeyInWalletWithEntropySeed: seed, andPassword: "")
     }
