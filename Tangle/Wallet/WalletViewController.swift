@@ -36,6 +36,7 @@ class WalletViewController: UIViewController {
     
     // Receive
     @IBOutlet weak var qrCodeImageView: UIImageView!
+    @IBOutlet weak var publicKeyLabel: UILabel!
     @IBOutlet weak var refreshButton: UIButton!
     
     // Send
@@ -62,26 +63,15 @@ class WalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareAccountBalanceTitleLabel()
-        prepareTapGestureRecognizer()
+        prepareBitcoinImageViewTapGestureRecognizer()
         prepareBitcoinLogoImageViewShakeAnimation()
+        prepareStackViewShadow()
+        preparePublicKeyTapGestureRecognizer()
         prepareRefreshShakeAnimation()
         prepareSendBitcoinButton()
         prepareForwardAddressTextField()
         
-        actionView.layer.masksToBounds = false
-        actionView.layer.shadowOffset = CGSizeMake(3, 3)
-        actionView.layer.shadowRadius = 10
-        actionView.layer.shadowOpacity = 0.2
-        
-        
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector: #selector(keyboardWillShow),
-                                                         name: UIKeyboardWillShowNotification,
-                                                         object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector: #selector(keyboardWillHide),
-                                                         name: UIKeyboardWillHideNotification,
-                                                         object: nil)
+        prepareNSNotificationCenterObserversForKeyboard()
     }
     
     // MARK: - Preparations
@@ -90,13 +80,26 @@ class WalletViewController: UIViewController {
         attributedString.addAttribute(NSKernAttributeName, value: 1.0, range: NSMakeRange(0, attributedString.length))
     }
     
-    func prepareTapGestureRecognizer() {
+    func prepareBitcoinImageViewTapGestureRecognizer() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(shakeAnimation))
         bitcoinLogoImageView.addGestureRecognizer(tap)
     }
     
     func prepareBitcoinLogoImageViewShakeAnimation() {
         bitcoinLogoImageViewShakeAnimation = CustomAnimation(view: bitcoinLogoImageView, afterDelay: 0, startDirection: .Left, repetitions: 6, maxRotation: 0.15, maxPosition: 20, duration: 0.15)
+    }
+    
+    func prepareStackViewShadow() {
+        actionView.layer.masksToBounds = false
+        actionView.layer.shadowOffset = CGSizeMake(3, 3)
+        actionView.layer.shadowRadius = 10
+        actionView.layer.shadowOpacity = 0.2
+    }
+    
+    func preparePublicKeyTapGestureRecognizer() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(copyPublicKey))
+        publicKeyLabel.userInteractionEnabled = true
+        publicKeyLabel.addGestureRecognizer(tap)
     }
     
     func prepareRefreshShakeAnimation() {
@@ -111,6 +114,17 @@ class WalletViewController: UIViewController {
         forwardAddressTextField.delegate = self
     }
     
+    func prepareNSNotificationCenterObserversForKeyboard() {
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(keyboardWillShow),
+                                                         name: UIKeyboardWillShowNotification,
+                                                         object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(keyboardWillHide),
+                                                         name: UIKeyboardWillHideNotification,
+                                                         object: nil)
+    }
+    
     // MARK: - Helper Methods
     // Receive Button Tapped
     func hideSendFunctionality() {
@@ -121,12 +135,14 @@ class WalletViewController: UIViewController {
     
     func unhideReceiveFunctionality() {
         qrCodeImageView.hidden = false
+        publicKeyLabel.hidden = false
         refreshButton.hidden = false
     }
     
     // Send Button Tapped
     func hideReceiveFunctionality() {
         qrCodeImageView.hidden = true
+        publicKeyLabel.hidden = true
         refreshButton.hidden = true
     }
     
@@ -136,6 +152,10 @@ class WalletViewController: UIViewController {
         sendBitcoinButton.hidden = false
     }
     
+    func copyPublicKey() {
+        print("Public Key Copied")
+        UIPasteboard.generalPasteboard().string = publicKeyLabel.text
+    }
     
     func keyboardWillShow(notification: NSNotification) {
         
@@ -156,7 +176,6 @@ class WalletViewController: UIViewController {
 
 extension WalletViewController {
     // MARK: - Animations
-    
     // Shake Animation
     func shakeAnimation() {
         bitcoinLogoImageViewShakeAnimation.shakeAnimation()
