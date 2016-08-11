@@ -19,6 +19,8 @@
 		E28137901D5913B60034027D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281378F1D5913B60034027D /* UIColor+Extensions.swift */; };
 		E28137921D591EFB0034027D /* CustomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28137911D591EFB0034027D /* CustomAnimation.swift */; };
 		E28137951D5945440034027D /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28137941D5945440034027D /* Wallet.swift */; };
+		E28252F31D5BCC9500E12E79 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28252F21D5BCC9500E12E79 /* Constants.swift */; };
+		E28252F61D5BD39900E12E79 /* WalletHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28252F51D5BD39900E12E79 /* WalletHelper.swift */; };
 		E2C8B23E1D4FE8B700B71642 /* GenerateMasterKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8B23B1D4FE8B700B71642 /* GenerateMasterKeyViewController.swift */; };
 		E2C8B2411D4FE8CB00B71642 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8B2401D4FE8CB00B71642 /* WalletViewController.swift */; };
 		E2C8B2461D4FE8EA00B71642 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2C8B2421D4FE8EA00B71642 /* LaunchScreen.storyboard */; };
@@ -54,6 +56,8 @@
 		E281378F1D5913B60034027D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extensions.swift"; path = "Extensions/UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		E28137911D591EFB0034027D /* CustomAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnimation.swift; sourceTree = "<group>"; };
 		E28137941D5945440034027D /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Wallet.swift; path = "Data Model/Wallet.swift"; sourceTree = "<group>"; };
+		E28252F21D5BCC9500E12E79 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Constants/Constants.swift; sourceTree = "<group>"; };
+		E28252F51D5BD39900E12E79 /* WalletHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletHelper.swift; path = Helpers/WalletHelper.swift; sourceTree = "<group>"; };
 		E2C8B23B1D4FE8B700B71642 /* GenerateMasterKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenerateMasterKeyViewController.swift; path = "Create Wallet/GenerateMasterKeyViewController.swift"; sourceTree = "<group>"; };
 		E2C8B2401D4FE8CB00B71642 /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletViewController.swift; path = Wallet/WalletViewController.swift; sourceTree = "<group>"; };
 		E2C8B2431D4FE8EA00B71642 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Supporting Files/Base.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
@@ -106,8 +110,10 @@
 				E227A3001D4D4E16005FD298 /* Onboarding */,
 				E227A30B1D4D5C08005FD298 /* Create Wallet */,
 				E227A3091D4D4E5D005FD298 /* Wallet */,
+				E28252F41D5BD37F00E12E79 /* Helpers */,
 				E28137931D59452F0034027D /* Data Model */,
 				E281378E1D59139E0034027D /* Extensions */,
+				E28252F11D5BCC5C00E12E79 /* Constants */,
 				E227A30A1D4D4E6D005FD298 /* Supporting Files */,
 			);
 			path = Tangle;
@@ -186,6 +192,22 @@
 				E28137941D5945440034027D /* Wallet.swift */,
 			);
 			name = "Data Model";
+			sourceTree = "<group>";
+		};
+		E28252F11D5BCC5C00E12E79 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				E28252F21D5BCC9500E12E79 /* Constants.swift */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		E28252F41D5BD37F00E12E79 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E28252F51D5BD39900E12E79 /* WalletHelper.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E28137951D5945440034027D /* Wallet.swift in Sources */,
+				E28252F61D5BD39900E12E79 /* WalletHelper.swift in Sources */,
 				E2C8B2411D4FE8CB00B71642 /* WalletViewController.swift in Sources */,
 				E256B8491D5677F2009089B8 /* OnboardingViewController.swift in Sources */,
 				E28137921D591EFB0034027D /* CustomAnimation.swift in Sources */,
@@ -302,6 +325,7 @@
 				E2C8B23E1D4FE8B700B71642 /* GenerateMasterKeyViewController.swift in Sources */,
 				E256B8481D5677F2009089B8 /* OnboardingModelController.swift in Sources */,
 				E256B84A1D5677F2009089B8 /* RootOnboardingViewController.swift in Sources */,
+				E28252F31D5BCC9500E12E79 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,12 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var wallet: Wallet?
     
-    // MARK: - Did Finish Launching With Options
+    // MARK: - App Delegate Methods
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         prepareStartViewController()
         
+        setupWalletBalanceNotifications()
+        
         return true
+    }
+    
+    func applicationDidBecomeActive(application: UIApplication) {
+        // TODO: Pull information from API based on stored keys and update balance
+    }
+    
+    // Disable extensions such as custom keyboards for security purposes
+    func application(application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: String) -> Bool {
+        return false
     }
     
     // MARK: - Preparations
@@ -48,6 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
     }
     
+    func setupWalletBalanceNotifications() {
+        // TODO: Setup Wallet Balance Notifications
+    }
+    
     // MARK: - Helper Methods
     func changeRootViewController(viewController: UIViewController) {
         
@@ -60,15 +75,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
-    }
-    
-    func applicationDidBecomeActive(application: UIApplication) {
-        // TODO: Pull information from API based on stored keys and update balance
-    }
-    
-    // Disable extensions such as custom keyboards for security purposes
-    func application(application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: String) -> Bool {
-        return false
     }
     
 }

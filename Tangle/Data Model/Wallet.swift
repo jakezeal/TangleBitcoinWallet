@@ -17,6 +17,8 @@ final class Wallet {
     
     let mnemonicString: String!
     
+    let passcodeEnabled = false
+    
     // Creating Wallet
     init(generateKeyInWalletWithEntropySeed seed: NSData, andPassword password: String) {
         

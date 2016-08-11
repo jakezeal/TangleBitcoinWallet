@@ -13,6 +13,7 @@ class GenerateMasterKeyViewController: UIViewController {
     private weak var appDelegate: AppDelegate! = UIApplication.sharedApplication().delegate as! AppDelegate
     
     // MARK: - IBOutlets
+    // TODO: Create a secure version of UILabel and use it for seedLabel, but make sure there's an accessibility work around
     @IBOutlet weak var mnemonicWordsLabel: UILabel!
     @IBOutlet weak var createWalletButton: UIButton!
     
@@ -26,27 +27,22 @@ class GenerateMasterKeyViewController: UIViewController {
     // MARK: - View Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        createWalletWithSeed()
+        prepareRandomSeed()
         prepareCreateWalletButton()
         prepareMnemonicWordsLabel()
         
     }
     
     // MARK: - Preparations
-    func createWalletWithSeed() {
-        
-        guard appDelegate.wallet == nil else { return }
-    
-        let seed = BTCRandomDataWithLength(32)
-        appDelegate.wallet = Wallet(generateKeyInWalletWithEntropySeed: seed, andPassword: "")
+    func prepareRandomSeed() {
+        WalletHelper.sharedInstance.generateRandomSeed()
     }
-
     
     func prepareCreateWalletButton() {
         createWalletButton.layer.cornerRadius = 5.0
     }
     
-    func prepareMnemonicWordsLabel() {
+    func prepareMnemonicWordsLabel() {        
         mnemonicWordsLabel.text = appDelegate.wallet?.mnemonicString
     }
     
