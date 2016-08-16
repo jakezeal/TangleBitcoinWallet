@@ -23,12 +23,22 @@ class OnboardingViewController: UIViewController {
     @IBOutlet weak var generateKeysButton: UIButton!
     
     // MARK: - IBActions
+    /**
+     @name  generateKeysButtonTapped
+     
+     - parameter sender: AnyObject
+     */
     @IBAction func generateKeysButtonTapped(sender: AnyObject) {
         print("Generate Keys Button Tapped -> Master Key Warning View Controller \n")
         generateKeysButton.enabled = false
     }
     
     // MARK: - View Lifecycles
+    /**
+     @name  viewWillAppear
+     
+     - parameter animated: Bool
+     */
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         prepareTitleLabel()
@@ -38,18 +48,30 @@ class OnboardingViewController: UIViewController {
     }
     
     // MARK: - Preparations
+    /**
+     @name  prepareTitleLabel
+     */
     func prepareTitleLabel() {
         titleLabel.text = titleText
     }
     
+    /**
+     @name  prepareDescriptionLabel
+     */
     func prepareDescriptionLabel() {
         descriptionLabel.text = summary
     }
     
+    /**
+     @name  prepareImageView
+     */
     func prepareImageView() {
         imageView.image = UIImage(named: imageName)
     }
     
+    /**
+     @name  prepareGenerateKeysButton
+     */
     func prepareGenerateKeysButton() {
         generateKeysButton.layer.cornerRadius = 5.0
         generateKeysButton.hidden = isButtonHidden

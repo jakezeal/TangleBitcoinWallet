@@ -20,6 +20,11 @@ class RootOnboardingViewController: UIViewController {
     @IBOutlet weak var skipButton: UIButton!
     
     // MARK: - IBActions
+    /**
+     @name  skipButtonTapped
+     
+     - parameter sender: AnyObject
+     */
     @IBAction func skipButtonTapped(sender: AnyObject) {
         //TODO: Skip Onboarding
         print("Skip Button Tapped")
