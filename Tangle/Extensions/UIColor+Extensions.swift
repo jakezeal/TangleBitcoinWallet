@@ -9,10 +9,20 @@
 import Foundation
 
 extension UIColor {
+    /**
+     @name  tangleBlueColor
+     
+     - returns: UIColor
+     */
     class func tangleBlueColor() -> UIColor {
         return UIColor(red:0.23, green:0.52, blue:0.73, alpha:1.00)
     }
     
+    /**
+     @name  offWhiteColor
+     
+     - returns: UIColor
+     */
     class func offWhiteColor() -> UIColor {
         return UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.00)
     }

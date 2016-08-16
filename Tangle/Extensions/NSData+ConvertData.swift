@@ -7,9 +7,15 @@
 //
 
 extension NSData {
+    /**
+     @name  convertDataToType<T>
+     
+     - returns: T
+     */
     func convertDataToType<T>() -> T {
         var valueOfType: T!
-        getBytes(&valueOfType, length: sizeof(valueOfType.dynamicType))
+        getBytes(&valueOfType, length: sizeof(T))
         return valueOfType
     }
+    
 }

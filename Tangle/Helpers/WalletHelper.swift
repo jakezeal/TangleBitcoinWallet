@@ -25,7 +25,7 @@ final class WalletHelper {
     func generateRandomSeed() -> String {
         
         let seed = NSMutableData(length: WalletHelperConstants.SeedEntropyLength)
-        var time: NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        var time: NSTimeInterval???? = NSDate.timeIntervalSinceReferenceDate()
         
         SecRandomCopyBytes(kSecRandomDefault, seed!.length, UnsafeMutablePointer<UInt8>(seed!.mutableBytes))
         

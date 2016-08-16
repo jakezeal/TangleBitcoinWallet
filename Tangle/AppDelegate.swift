@@ -17,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var wallet: Wallet?
     
     // MARK: - App Delegate Methods
+    /**
+     @name  application:didFinishLaunchingWithOptions
+     
+     - parameter application:   UIApplication
+     - parameter launchOptions: [NSObject: AnyObject]?
+     
+     - returns: Bool
+     */
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         prepareStartViewController()
@@ -26,21 +34,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    /**
+     @name  applicationDidBecomeActive
+     
+     - parameter application: UIApplication
+     */
     func applicationDidBecomeActive(application: UIApplication) {
         // TODO: Pull information from API based on stored keys and update balance
     }
     
+    /**
+     @name  application:shouldAllowExtensionPointIdentifier
+     
+     - parameter application:              UIApplication
+     - parameter extensionPointIdentifier: String
+     
+     - returns: Bool
+     */
     // Disable extensions such as custom keyboards for security purposes
     func application(application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: String) -> Bool {
         return false
     }
     
     // MARK: - Preparations
+    /**
+     @name  prepareStartViewController
+     */
     private func prepareStartViewController() {
         
         let startViewController: UIViewController
     
-        if false {
+        if true {
             // If it is the user's first time on application, show onboarding
             let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
             startViewController = storyboard.instantiateViewControllerWithIdentifier("RootOnboardingViewController") as! RootOnboardingViewController
@@ -53,17 +77,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         prepareWindow(startViewController)
     }
     
+    /**
+     @name  prepareWindow
+     
+     - parameter startViewController: UIViewController
+     */
     private func prepareWindow(startViewController: UIViewController) {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = startViewController
         window?.makeKeyAndVisible()
     }
     
+    /**
+     @name  setupWalletBalanceNotifications
+     */
     func setupWalletBalanceNotifications() {
         // TODO: Setup Wallet Balance Notifications
     }
     
     // MARK: - Helper Methods
+    /**
+     @name  changeRootViewController
+     
+     - parameter viewController: UIViewController
+     */
     func changeRootViewController(viewController: UIViewController) {
         
         UIView.transitionWithView(window!,
