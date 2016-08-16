@@ -26,6 +26,9 @@ class RootOnboardingViewController: UIViewController {
     }
     
     // MARK: - View Lifecycles
+    /**
+     @name  viewDidLoad
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         preparePageViewController()
@@ -36,16 +39,25 @@ class RootOnboardingViewController: UIViewController {
 
 extension RootOnboardingViewController {
     // MARK: - Preparations
+    /**
+     @name  prepareLogoImageView
+     */
     func prepareLogoImageView() {
         logoImageView.layer.zPosition = 100
     }
     
+    /**
+     @name  prepareSkipButton
+     */
     func prepareSkipButton() {
         skipButton.layer.zPosition = 100
         view.bringSubviewToFront(skipButton)
         
     }
     
+    /**
+     @name  preparePageViewController
+     */
     func preparePageViewController() {
         // Configure the page view controller and add it as a child view controller.
         pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
@@ -76,6 +88,14 @@ extension RootOnboardingViewController {
 
 extension RootOnboardingViewController: UIPageViewControllerDelegate {
     // MARK: - Page View Controller Delegate Methods
+    /**
+     @name  pageViewController:spineLocationForInterfaceOrientation
+     
+     - parameter pageViewController: UIPageViewController
+     - parameter orientation:        UIInterfaceOrientation
+     
+     - returns: UIPageViewControllerSpineLocation
+     */
     func pageViewController(pageViewController: UIPageViewController, spineLocationForInterfaceOrientation orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation {
         
         // Portrait Orientation
