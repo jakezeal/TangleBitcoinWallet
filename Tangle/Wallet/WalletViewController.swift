@@ -45,31 +45,57 @@ final class WalletViewController: UIViewController {
     @IBOutlet weak var sendBitcoinButton: UIButton!
     
     // MARK: - IBActions
+    /**
+     @name  receiveButtonTapped
+     
+     - parameter sender: AnyObject
+     */
     @IBAction func receiveButtonTapped(sender: AnyObject) {
         hideSendFunctionality()
         unhideReceiveFunctionality()
     }
     
+    /**
+     @name  sendButtonTapped
+     
+     - parameter sender: AnyObject
+     */
     @IBAction func sendButtonTapped(sender: AnyObject) {
         hideReceiveFunctionality()
         unhideSendFunctionality()
     }
     
+    /**
+     @name  refreshButtonTapped
+     
+     - parameter sender: AnyObject
+     */
     @IBAction func refreshButtonTapped(sender: AnyObject) {
+        // TODO: Generate and display new public key
         refreshRotateAnimation.rotateAnimation()
     }
     
+    /**
+     @name  sendBitcoinButtonTapped
+     
+     - parameter sender: AnyObject
+     */
     @IBAction func sendBitcoinButtonTapped(sender: AnyObject) {
         
-//        view.endEditing(true)
         forwardAddressTextField.resignFirstResponder()
         sendAmountTextField.resignFirstResponder()
         
         view.bounds.origin.y = 0
     }
+    
     // MARK: - View Lifecycles
+    /**
+     @name  viewDidLoad
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        prepareStatusBar()
         prepareAccountBalanceTitleLabel()
         prepareBitcoinImageViewTapGestureRecognizer()
         prepareBitcoinLogoImageViewShakeAnimation()
@@ -80,27 +106,43 @@ final class WalletViewController: UIViewController {
         prepareForwardAddressTextField()
         prepareNSNotificationCenterObserversForKeyboard()
         
-        UIApplication.sharedApplication().statusBarStyle = .LightContent
-
-        
         getKeychainData()
     }
     
     // MARK: - Preparations
+    /**
+     @name  prepareStatusBar
+     */
+    func prepareStatusBar() {
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+    }
+    
+    /**
+     @name  prepareAccountBalanceTitleLabel
+     */
     func prepareAccountBalanceTitleLabel() {
         let attributedString = accountTitleBalanceLabel.attributedText as! NSMutableAttributedString
         attributedString.addAttribute(NSKernAttributeName, value: 1.0, range: NSMakeRange(0, attributedString.length))
     }
     
+    /**
+     @name  prepareBitcoinImageViewTapGestureRecognizer
+     */
     func prepareBitcoinImageViewTapGestureRecognizer() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(shakeAnimation))
         bitcoinLogoImageView.addGestureRecognizer(tap)
     }
     
+    /**
+     @name  prepareBitcoinLogoImageViewShakeAnimation
+     */
     func prepareBitcoinLogoImageViewShakeAnimation() {
         bitcoinLogoImageViewShakeAnimation = CustomAnimation(view: bitcoinLogoImageView, afterDelay: 0, startDirection: .Left, repetitions: 6, maxRotation: 0.15, maxPosition: 20, duration: 0.15)
     }
     
+    /**
+     @name  prepareStackViewShadow
+     */
     func prepareStackViewShadow() {
         actionView.layer.masksToBounds = false
         actionView.layer.shadowOffset = CGSizeMake(3, 3)
@@ -108,24 +150,39 @@ final class WalletViewController: UIViewController {
         actionView.layer.shadowOpacity = 0.2
     }
     
+    /**
+     @name  preparePublicKeyTapGestureRecognizer
+     */
     func preparePublicKeyTapGestureRecognizer() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(copyPublicKey))
         publicKeyLabel.userInteractionEnabled = true
         publicKeyLabel.addGestureRecognizer(tap)
     }
     
+    /**
+     @name  prepareRefreshShakeAnimation
+     */
     func prepareRefreshShakeAnimation() {
         refreshRotateAnimation = CustomAnimation(view: refreshButton, afterDelay: 0, startDirection: .Right, repetitions: 1, maxRotation: 1, maxPosition: 0, duration: 0.2)
     }
     
+    /**
+     @name  prepareSendBitcoinButton
+     */
     func prepareSendBitcoinButton() {
         sendBitcoinButton.layer.cornerRadius = 5.0
     }
     
+    /**
+     @name  prepareForwardAddressTextField
+     */
     func prepareForwardAddressTextField() {
         forwardAddressTextField.delegate = self
     }
     
+    /**
+     @name  prepareNSNotificationCenterObserversForKeyboard
+     */
     func prepareNSNotificationCenterObserversForKeyboard() {
         NSNotificationCenter.defaultCenter().addObserver(self,
                                                          selector: #selector(keyboardWillShow),
@@ -137,6 +194,9 @@ final class WalletViewController: UIViewController {
                                                          object: nil)
     }
     
+    /**
+     @name  getKeychainData
+     */
     func getKeychainData() {
         var error: NSError?
         let data = WalletHelper.sharedInstance.getKeychainData(WalletHelperConstants.SeedCreationTime, error: &error)
@@ -150,18 +210,22 @@ final class WalletViewController: UIViewController {
             let result: Double? = data.convertDataToType()
             print("Convert Data to Type: \(result)")
         }
-        
-        
     }
     
     // MARK: - Helper Methods
     // Receive Button Tapped
+    /**
+     @name  hideSendFunctionality
+     */
     func hideSendFunctionality() {
         sendAmountTextField.hidden = true
         forwardAddressTextField.hidden = true
         sendBitcoinButton.hidden = true
     }
     
+    /**
+     @name  unhideReceiveFunctionality
+     */
     func unhideReceiveFunctionality() {
         qrCodeImageView.hidden = false
         publicKeyLabel.hidden = false
@@ -169,58 +233,85 @@ final class WalletViewController: UIViewController {
     }
     
     // Send Button Tapped
+    /**
+     @name  hideReceiveFunctionality
+     */
     func hideReceiveFunctionality() {
         qrCodeImageView.hidden = true
         publicKeyLabel.hidden = true
         refreshButton.hidden = true
     }
     
+    /**
+     @name  unhideSendFunctionality
+     */
     func unhideSendFunctionality() {
         sendAmountTextField.hidden = false
         forwardAddressTextField.hidden = false
         sendBitcoinButton.hidden = false
     }
     
-    // Update UI with Keyboard
+    /**
+     @name  keyboardWillShow
+     
+     - parameter notification: NSNotification
+     */
     func keyboardWillShow(notification: NSNotification) {
-        
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             if view.bounds.origin.y == 0 {
                 view.bounds.origin.y += keyboardSize.height
             }
         }
-        
     }
     
+    /**
+     @name  keyboardWillHide
+     
+     - parameter notification: NSNotification
+     */
     func keyboardWillHide(notification: NSNotification) {
         view.bounds.origin.y = 0
     }
     
-    // Copy Public Key
+    /**
+     @name  copyPublicKey
+     */
     func copyPublicKey() {
-        print("Public Key Copied")
         UIPasteboard.generalPasteboard().string = publicKeyLabel.text
+        print("Public Key Copied")
     }   
     
 }
 
 extension WalletViewController {
     // MARK: - Animations
-    // Shake Animation
+    /**
+     @name  shakeAnimation
+     */
     func shakeAnimation() {
         bitcoinLogoImageViewShakeAnimation.shakeAnimation()
     }
     
-    // Shake Phone Gesture
+    /**
+     @name  canBecomeFirstResponder
+     
+     - returns: Bool
+     */
     override func canBecomeFirstResponder() -> Bool {
         return true
     }
     
+    /**
+     @name  motionEnded:withEvent
+     
+     - parameter motion: UIEventSubtype
+     - parameter event:  UIEvent?
+     */
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         
         mode = Mode(rawValue: abs(mode!.rawValue - 1))!
         
-        switch mode! as Mode {
+        switch mode! {
         case .normal:
             actionView.backgroundColor = UIColor.whiteColor()
             break
@@ -229,15 +320,19 @@ extension WalletViewController {
             break
         }
         
-        //        guard bitcoinLogoImageViewShakeAnimation.running == false else { return }
-        
         bitcoinLogoImageViewShakeAnimation.shakeAnimation()
-        
     }
 }
 
 // MARK: - Text Field Delegates
 extension WalletViewController: UITextFieldDelegate {
+    /**
+     @name  textFieldShouldReturn
+     
+     - parameter textField: UITextField
+     
+     - returns: Bool
+     */
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         view.endEditing(true)
         if textField == sendAmountTextField {
@@ -246,6 +341,12 @@ extension WalletViewController: UITextFieldDelegate {
         return true
     }
     
+    /**
+     @name  touchesBegan:withEvent
+     
+     - parameter touches: Set<UITouch>
+     - parameter event:   UIEvent?
+     */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         actionView.endEditing(true)
     }
