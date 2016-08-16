@@ -39,6 +39,17 @@ final class CustomAnimation {
     var counter = 0
     
     // MARK: - Initializers
+    /**
+     @name view:afterDelay:startDirection:
+     
+     - parameter view:        UIView
+     - parameter delay:       Double
+     - parameter direction:   Direction
+     - parameter repetitions: Int
+     - parameter maxRotation: CGFloat
+     - parameter maxPosition: CGFloat
+     - parameter duration:    Double
+     */
     init(view: UIView, afterDelay delay: Double, startDirection direction: Direction, repetitions: Int, maxRotation: CGFloat, maxPosition: CGFloat, duration: Double) {
         self.view = view
         self.delay = delay
@@ -50,6 +61,9 @@ final class CustomAnimation {
     }
     
     // MARK: - Animation Methods
+    /**
+     @name  shakeAnimation
+     */
     func shakeAnimation() {
         
         guard !running else { return }
@@ -86,12 +100,15 @@ final class CustomAnimation {
                                     self.view.transform = CGAffineTransformMakeRotation(rotation * factor)
                                     
         }) { (completed: Bool) in
-            self.finishAnimation()
+            self.finishShakeAnimation()
         }
         
     }
     
-    func finishAnimation() {
+    /**
+     @name  finishShakeAnimation
+     */
+    func finishShakeAnimation() {
         running = false
         
         direction = Direction(rawValue: abs(self.direction.rawValue - 1))!
@@ -117,6 +134,9 @@ final class CustomAnimation {
         
     }
     
+    /**
+     @name  rotateAnimation
+     */
     func rotateAnimation() {
         let factor = CGFloat(direction.rawValue * 2 - 1)
         

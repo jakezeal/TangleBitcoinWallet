@@ -9,7 +9,7 @@
 import Foundation
 
 final class Wallet {
-
+    
     let mnemonic: BTCMnemonic!
     
     let seed: NSData!
@@ -19,14 +19,19 @@ final class Wallet {
     
     let passcodeEnabled = false
     
-    // Creating Wallet
+    /**
+     @name  generateKeyInWalletWithEntropySeed:andPassword
+     
+     - parameter seed:     NSData
+     - parameter password: String
+     */
     init(generateKeyInWalletWithEntropySeed seed: NSData, andPassword password: String) {
         
         mnemonic = BTCMnemonic(entropy: seed, password: password, wordListType: .English)
         self.seed = mnemonic.seed
         keychain = BTCKeychain(seed: mnemonic.seed)
         
-        var mnemonicString = String()
+        var mnemonicString = ""
         
         if let mnemonic = mnemonic {
             
@@ -43,5 +48,5 @@ final class Wallet {
         self.mnemonicString = mnemonicString
         print(mnemonicString)
     }
-
+    
 }
