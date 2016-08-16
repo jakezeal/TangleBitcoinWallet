@@ -20,7 +20,7 @@ enum State {
     case Final
 }
 
-class CustomAnimation {
+final class CustomAnimation {
     
     // MARK: - Properties
     var view: UIView!

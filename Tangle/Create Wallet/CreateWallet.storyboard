@@ -18,33 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write down your Master Phrase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNH-TT-dyQ">
-                                <rect key="frame" x="20" y="50" width="560" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Double check that you wrote it down correctly." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBG-RE-v3T">
-                                <rect key="frame" x="28" y="121" width="544" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ensure you write it down correctly." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBG-RE-v3T">
+                                <rect key="frame" x="28" y="136" width="544" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biK-69-dCK">
-                                <rect key="frame" x="20" y="192" width="560" height="59.5"/>
+                                <rect key="frame" x="28" y="230.5" width="544" height="57.5"/>
                                 <string key="text">angry sound benefit scare daughter rough shine balcony naive winner mixed endorse lumber fruit paper scale alert neither alarm size mind control public pave</string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybE-xO-Zod">
-                                <rect key="frame" x="150" y="445" width="300" height="30"/>
+                                <rect key="frame" x="28" y="488" width="544" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8hb-z8-qCt"/>
-                                    <constraint firstAttribute="width" constant="300" id="XXf-Oa-nCI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Create Wallet">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -52,19 +45,27 @@
                                     <action selector="createWalletButtonTapped:" destination="o3g-kh-y23" eventType="touchUpInside" id="FBg-jF-Ght"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write down your Master Phrase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNH-TT-dyQ">
+                                <rect key="frame" x="28" y="95" width="544" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jNH-TT-dyQ" firstAttribute="top" secondItem="RMc-Tb-WZW" secondAttribute="bottom" constant="30" id="8Id-ah-oIn"/>
-                            <constraint firstItem="biK-69-dCK" firstAttribute="leading" secondItem="O4c-ZO-nMw" secondAttribute="leadingMargin" id="ADR-Q9-tCx"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="biK-69-dCK" secondAttribute="trailing" id="Ilc-Qz-7gN"/>
+                            <constraint firstItem="jNH-TT-dyQ" firstAttribute="top" secondItem="RMc-Tb-WZW" secondAttribute="bottom" constant="75" id="8Id-ah-oIn"/>
+                            <constraint firstItem="biK-69-dCK" firstAttribute="leading" secondItem="O4c-ZO-nMw" secondAttribute="leadingMargin" constant="8" id="ADR-Q9-tCx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="biK-69-dCK" secondAttribute="trailing" constant="8" id="Ilc-Qz-7gN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ybE-xO-Zod" secondAttribute="trailing" constant="8" id="J1w-7w-CJR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TBG-RE-v3T" secondAttribute="trailing" constant="8" id="MyP-EO-DRv"/>
-                            <constraint firstItem="biK-69-dCK" firstAttribute="top" secondItem="TBG-RE-v3T" secondAttribute="bottom" constant="50" id="Pyy-eK-in4"/>
+                            <constraint firstItem="biK-69-dCK" firstAttribute="top" secondItem="TBG-RE-v3T" secondAttribute="bottom" constant="75" id="Pyy-eK-in4"/>
                             <constraint firstItem="TBG-RE-v3T" firstAttribute="leading" secondItem="O4c-ZO-nMw" secondAttribute="leadingMargin" constant="8" id="QKA-Lm-rSV"/>
-                            <constraint firstItem="jNH-TT-dyQ" firstAttribute="leading" secondItem="O4c-ZO-nMw" secondAttribute="leadingMargin" id="Wqi-X3-HKC"/>
-                            <constraint firstItem="TBG-RE-v3T" firstAttribute="top" secondItem="jNH-TT-dyQ" secondAttribute="bottom" constant="50" id="b3i-lx-u86"/>
-                            <constraint firstItem="1Nq-If-HFQ" firstAttribute="top" secondItem="ybE-xO-Zod" secondAttribute="bottom" constant="125" id="hSt-qn-tn4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="jNH-TT-dyQ" secondAttribute="trailing" id="iFK-k2-u0n"/>
+                            <constraint firstItem="jNH-TT-dyQ" firstAttribute="leading" secondItem="O4c-ZO-nMw" secondAttribute="leadingMargin" constant="8" id="Wqi-X3-HKC"/>
+                            <constraint firstItem="TBG-RE-v3T" firstAttribute="top" secondItem="jNH-TT-dyQ" secondAttribute="bottom" constant="20" id="b3i-lx-u86"/>
+                            <constraint firstItem="ybE-xO-Zod" firstAttribute="leading" secondItem="O4c-ZO-nMw" secondAttribute="leadingMargin" constant="8" id="b5O-Tw-qaH"/>
+                            <constraint firstItem="1Nq-If-HFQ" firstAttribute="top" secondItem="ybE-xO-Zod" secondAttribute="bottom" constant="82" id="hSt-qn-tn4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jNH-TT-dyQ" secondAttribute="trailing" constant="8" id="iFK-k2-u0n"/>
                             <constraint firstItem="ybE-xO-Zod" firstAttribute="centerX" secondItem="O4c-ZO-nMw" secondAttribute="centerX" id="n9a-c8-8uM"/>
                         </constraints>
                     </view>

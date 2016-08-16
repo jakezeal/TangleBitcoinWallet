@@ -13,7 +13,7 @@ enum Mode: Int {
     case mix
 }
 
-class WalletViewController: UIViewController {
+final class WalletViewController: UIViewController {
     // MARK: - Properties
     var mode = Mode(rawValue: 0)
     
@@ -59,6 +59,14 @@ class WalletViewController: UIViewController {
         refreshRotateAnimation.rotateAnimation()
     }
     
+    @IBAction func sendBitcoinButtonTapped(sender: AnyObject) {
+        
+//        view.endEditing(true)
+        forwardAddressTextField.resignFirstResponder()
+        sendAmountTextField.resignFirstResponder()
+        
+        view.bounds.origin.y = 0
+    }
     // MARK: - View Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +79,11 @@ class WalletViewController: UIViewController {
         prepareSendBitcoinButton()
         prepareForwardAddressTextField()
         prepareNSNotificationCenterObserversForKeyboard()
+        
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+
+        
+        getKeychainData()
     }
     
     // MARK: - Preparations
@@ -124,6 +137,23 @@ class WalletViewController: UIViewController {
                                                          object: nil)
     }
     
+    func getKeychainData() {
+        var error: NSError?
+        let data = WalletHelper.sharedInstance.getKeychainData(WalletHelperConstants.SeedCreationTime, error: &error)
+        
+        guard error == nil else {
+            print(error)
+            return
+        }
+        
+        if let data = data {
+            let result: Double? = data.convertDataToType()
+            print("Convert Data to Type: \(result)")
+        }
+        
+        
+    }
+    
     // MARK: - Helper Methods
     // Receive Button Tapped
     func hideSendFunctionality() {
@@ -151,11 +181,7 @@ class WalletViewController: UIViewController {
         sendBitcoinButton.hidden = false
     }
     
-    func copyPublicKey() {
-        print("Public Key Copied")
-        UIPasteboard.generalPasteboard().string = publicKeyLabel.text
-    }
-    
+    // Update UI with Keyboard
     func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
@@ -170,6 +196,11 @@ class WalletViewController: UIViewController {
         view.bounds.origin.y = 0
     }
     
+    // Copy Public Key
+    func copyPublicKey() {
+        print("Public Key Copied")
+        UIPasteboard.generalPasteboard().string = publicKeyLabel.text
+    }   
     
 }
 

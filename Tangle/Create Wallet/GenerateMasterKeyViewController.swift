@@ -10,6 +10,7 @@ import UIKit
 
 class GenerateMasterKeyViewController: UIViewController {
     
+    // MARK: - Properties
     private weak var appDelegate: AppDelegate! = UIApplication.sharedApplication().delegate as! AppDelegate
     
     // MARK: - IBOutlets
@@ -27,23 +28,25 @@ class GenerateMasterKeyViewController: UIViewController {
     // MARK: - View Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        prepareRandomSeed()
+        // TODO: Block screenshots and / or send alert to user in regards to risk
         prepareCreateWalletButton()
         prepareMnemonicWordsLabel()
         
     }
     
-    // MARK: - Preparations
-    func prepareRandomSeed() {
-        WalletHelper.sharedInstance.generateRandomSeed()
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Don't leave the seed phrase laying around in memory any longer than necessary
+        mnemonicWordsLabel.text = ""
     }
     
+    // MARK: - Preparations
     func prepareCreateWalletButton() {
         createWalletButton.layer.cornerRadius = 5.0
     }
     
     func prepareMnemonicWordsLabel() {        
-        mnemonicWordsLabel.text = appDelegate.wallet?.mnemonicString
+        mnemonicWordsLabel.text = WalletHelper.sharedInstance.generateRandomSeed()
     }
     
     

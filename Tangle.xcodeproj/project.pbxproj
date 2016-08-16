@@ -16,6 +16,7 @@
 		E256B8491D5677F2009089B8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256B8441D5677F2009089B8 /* OnboardingViewController.swift */; };
 		E256B84A1D5677F2009089B8 /* RootOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256B8451D5677F2009089B8 /* RootOnboardingViewController.swift */; };
 		E256B84C1D56780E009089B8 /* CreateWallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E256B84B1D56780E009089B8 /* CreateWallet.storyboard */; };
+		E26358EC1D5D3D0E0093C35B /* NSData+ConvertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26358EB1D5D3D0E0093C35B /* NSData+ConvertData.swift */; };
 		E28137901D5913B60034027D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281378F1D5913B60034027D /* UIColor+Extensions.swift */; };
 		E28137921D591EFB0034027D /* CustomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28137911D591EFB0034027D /* CustomAnimation.swift */; };
 		E28137951D5945440034027D /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28137941D5945440034027D /* Wallet.swift */; };
@@ -53,6 +54,7 @@
 		E256B8441D5677F2009089B8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingViewController.swift; path = Onboarding/OnboardingViewController.swift; sourceTree = "<group>"; };
 		E256B8451D5677F2009089B8 /* RootOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootOnboardingViewController.swift; path = Onboarding/RootOnboardingViewController.swift; sourceTree = "<group>"; };
 		E256B84B1D56780E009089B8 /* CreateWallet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreateWallet.storyboard; path = "Create Wallet/CreateWallet.storyboard"; sourceTree = "<group>"; };
+		E26358EB1D5D3D0E0093C35B /* NSData+ConvertData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSData+ConvertData.swift"; path = "Extensions/NSData+ConvertData.swift"; sourceTree = "<group>"; };
 		E281378F1D5913B60034027D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extensions.swift"; path = "Extensions/UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		E28137911D591EFB0034027D /* CustomAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnimation.swift; sourceTree = "<group>"; };
 		E28137941D5945440034027D /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Wallet.swift; path = "Data Model/Wallet.swift"; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			children = (
 				E28137911D591EFB0034027D /* CustomAnimation.swift */,
 				E281378F1D5913B60034027D /* UIColor+Extensions.swift */,
+				E26358EB1D5D3D0E0093C35B /* NSData+ConvertData.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			files = (
 				E28137951D5945440034027D /* Wallet.swift in Sources */,
 				E28252F61D5BD39900E12E79 /* WalletHelper.swift in Sources */,
+				E26358EC1D5D3D0E0093C35B /* NSData+ConvertData.swift in Sources */,
 				E2C8B2411D4FE8CB00B71642 /* WalletViewController.swift in Sources */,
 				E256B8491D5677F2009089B8 /* OnboardingViewController.swift in Sources */,
 				E28137921D591EFB0034027D /* CustomAnimation.swift in Sources */,

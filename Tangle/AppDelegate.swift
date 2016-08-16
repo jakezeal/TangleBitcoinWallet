@@ -36,11 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - Preparations
-    func prepareStartViewController() {
+    private func prepareStartViewController() {
         
         let startViewController: UIViewController
-        
-        if false {
+    
+        if true {
             // If it is the user's first time on application, show onboarding
             let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
             startViewController = storyboard.instantiateViewControllerWithIdentifier("RootOnboardingViewController") as! RootOnboardingViewController
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         prepareWindow(startViewController)
     }
     
-    func prepareWindow(startViewController: UIViewController) {
+    private func prepareWindow(startViewController: UIViewController) {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = startViewController
         window?.makeKeyAndVisible()
