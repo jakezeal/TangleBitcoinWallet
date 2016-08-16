@@ -38,6 +38,14 @@ class OnboardingModelController: NSObject {
 
 extension OnboardingModelController {
     // MARK: - Helper Methods
+    /**
+     @name  viewControllerAtIndex
+     
+     - parameter index:      Int
+     - parameter storyboard: UIStoryboard
+     
+     - returns: OnboardingViewController?
+     */
     func viewControllerAtIndex(index: Int, storyboard: UIStoryboard) -> OnboardingViewController? {
         // Return the data view controller for the given index.
         if (titles.count == 0) || (index >= titles.count) {
@@ -58,6 +66,13 @@ extension OnboardingModelController {
         return onboardingViewController
     }
     
+    /**
+     @name  indexOfViewController
+     
+     - parameter viewController: OnboardingViewController
+     
+     - returns: Int
+     */
     func indexOfViewController(viewController: OnboardingViewController) -> Int {
         // Return the index of the given onboarding view controller.
         return titles.indexOf(viewController.titleText) ?? NSNotFound
@@ -66,6 +81,14 @@ extension OnboardingModelController {
 
 extension OnboardingModelController: UIPageViewControllerDataSource {
     // MARK: - Page View Controller Data Source
+    /**
+     @name  pageViewController:viewControllerBeforeViewController
+     
+     - parameter pageViewController: UIPageViewController
+     - parameter viewController:     UIViewController
+     
+     - returns: UIViewController?
+     */
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         var index = self.indexOfViewController(viewController as! OnboardingViewController)
         
@@ -78,6 +101,14 @@ extension OnboardingModelController: UIPageViewControllerDataSource {
         return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
     }
     
+    /**
+     @name  pageViewController:viewControllerAfterViewController
+     
+     - parameter pageViewController: UIPageViewController
+     - parameter viewController:     UIViewController
+     
+     - returns: UIViewController?
+     */
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         
         // TODO: Animate Logo Image View to center and hide Skip Button
