@@ -109,6 +109,10 @@ final class WalletViewController: UIViewController {
         getKeychainData()
     }
     
+}
+
+private extension WalletViewController {
+
     // MARK: - Preparations
     /**
      @name  prepareStatusBar
@@ -181,20 +185,6 @@ final class WalletViewController: UIViewController {
     }
     
     /**
-     @name  prepareNSNotificationCenterObserversForKeyboard
-     */
-    func prepareNSNotificationCenterObserversForKeyboard() {
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector: #selector(keyboardWillShow),
-                                                         name: UIKeyboardWillShowNotification,
-                                                         object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector: #selector(keyboardWillHide),
-                                                         name: UIKeyboardWillHideNotification,
-                                                         object: nil)
-    }
-    
-    /**
      @name  getKeychainData
      */
     func getKeychainData() {
@@ -212,7 +202,9 @@ final class WalletViewController: UIViewController {
         }
     }
     
-    // MARK: - Helper Methods
+}
+// MARK: - Helper Methods
+extension WalletViewController {
     // Receive Button Tapped
     /**
      @name  hideSendFunctionality
@@ -252,11 +244,43 @@ final class WalletViewController: UIViewController {
     }
     
     /**
+     @name  copyPublicKey
+     */
+    func copyPublicKey() {
+        UIPasteboard.generalPasteboard().string = publicKeyLabel.text
+        print("Public Key Copied")
+    }
+    
+    /**
+     @name  shakeAnimation
+     */
+    func shakeAnimation() {
+        bitcoinLogoImageViewShakeAnimation.shakeAnimation()
+    }
+}
+
+// MARK: - NSNotification Helper Methods
+extension WalletViewController {
+    /**
+     @name  prepareNSNotificationCenterObserversForKeyboard
+     */
+    func prepareNSNotificationCenterObserversForKeyboard() {
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(keyboardWillShow),
+                                                         name: UIKeyboardWillShowNotification,
+                                                         object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(keyboardWillHide),
+                                                         name: UIKeyboardWillHideNotification,
+                                                         object: nil)
+    }
+    
+    /**
      @name  keyboardWillShow
      
      - parameter notification: NSNotification
      */
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             if view.bounds.origin.y == 0 {
                 view.bounds.origin.y += keyboardSize.height
@@ -269,29 +293,13 @@ final class WalletViewController: UIViewController {
      
      - parameter notification: NSNotification
      */
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         view.bounds.origin.y = 0
     }
-    
-    /**
-     @name  copyPublicKey
-     */
-    func copyPublicKey() {
-        UIPasteboard.generalPasteboard().string = publicKeyLabel.text
-        print("Public Key Copied")
-    }   
-    
 }
 
+// MARK: - Shake Phone Animations
 extension WalletViewController {
-    // MARK: - Animations
-    /**
-     @name  shakeAnimation
-     */
-    func shakeAnimation() {
-        bitcoinLogoImageViewShakeAnimation.shakeAnimation()
-    }
-    
     /**
      @name  canBecomeFirstResponder
      
@@ -324,7 +332,7 @@ extension WalletViewController {
     }
 }
 
-// MARK: - Text Field Delegates
+// MARK: - Text Field Delegate Methods
 extension WalletViewController: UITextFieldDelegate {
     /**
      @name  textFieldShouldReturn

@@ -53,7 +53,10 @@ class GenerateMasterKeyViewController: UIViewController {
         mnemonicWordsLabel.text = ""
     }
     
-    // MARK: - Preparations
+}
+
+// MARK: - Preparations
+private extension GenerateMasterKeyViewController {
     /**
      @name  prepareCreateWalletButton
      */
@@ -81,5 +84,4 @@ class GenerateMasterKeyViewController: UIViewController {
         
         appDelegate.changeRootViewController(walletViewController)
     }
-    
 }
