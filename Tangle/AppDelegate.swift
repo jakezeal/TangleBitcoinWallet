@@ -56,11 +56,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return false
     }
     
+    // MARK: - Helper Methods
+    /**
+     @name  changeRootViewController
+     
+     - parameter viewController: UIViewController
+     */
+    func changeRootViewController(viewController: UIViewController) {
+        
+        UIView.transitionWithView(window!,
+                                  duration: 0.5,
+                                  options: .TransitionFlipFromLeft,
+                                  animations: {
+                                    self.window?.rootViewController = viewController
+            }, completion: nil)
+        
+        window?.makeKeyAndVisible()
+    }
+    
+}
+
+private extension AppDelegate {
+
     // MARK: - Preparations
     /**
      @name  prepareStartViewController
      */
-    private func prepareStartViewController() {
+    func prepareStartViewController() {
         
         let startViewController: UIViewController
     
@@ -82,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      
      - parameter startViewController: UIViewController
      */
-    private func prepareWindow(startViewController: UIViewController) {
+    func prepareWindow(startViewController: UIViewController) {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = startViewController
         window?.makeKeyAndVisible()
@@ -93,24 +115,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      */
     func setupWalletBalanceNotifications() {
         // TODO: Setup Wallet Balance Notifications
-    }
-    
-    // MARK: - Helper Methods
-    /**
-     @name  changeRootViewController
-     
-     - parameter viewController: UIViewController
-     */
-    func changeRootViewController(viewController: UIViewController) {
-        
-        UIView.transitionWithView(window!,
-                                  duration: 0.5,
-                                  options: .TransitionFlipFromLeft,
-                                  animations: {
-                                    self.window?.rootViewController = viewController
-            }, completion: nil)
-        
-        window?.makeKeyAndVisible()
     }
     
 }
