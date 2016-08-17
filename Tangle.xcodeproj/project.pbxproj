@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2159FC01D64FC4800F87231 /* NSMutableData+Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2159FBF1D64FC4800F87231 /* NSMutableData+Bitcoin.swift */; };
 		E227A2E11D4D4DC1005FD298 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E227A2E01D4D4DC1005FD298 /* AppDelegate.swift */; };
 		E227A2F61D4D4DC1005FD298 /* TangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E227A2F51D4D4DC1005FD298 /* TangleTests.swift */; };
 		E2402BE61D51104F00FF52E4 /* CoreBitcoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2402BE51D51104F00FF52E4 /* CoreBitcoin.framework */; };
@@ -16,7 +17,7 @@
 		E256B8491D5677F2009089B8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256B8441D5677F2009089B8 /* OnboardingViewController.swift */; };
 		E256B84A1D5677F2009089B8 /* RootOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256B8451D5677F2009089B8 /* RootOnboardingViewController.swift */; };
 		E256B84C1D56780E009089B8 /* CreateWallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E256B84B1D56780E009089B8 /* CreateWallet.storyboard */; };
-		E26358EC1D5D3D0E0093C35B /* NSData+ConvertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26358EB1D5D3D0E0093C35B /* NSData+ConvertData.swift */; };
+		E26358EC1D5D3D0E0093C35B /* NSData+Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26358EB1D5D3D0E0093C35B /* NSData+Bitcoin.swift */; };
 		E28137901D5913B60034027D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281378F1D5913B60034027D /* UIColor+Extensions.swift */; };
 		E28137921D591EFB0034027D /* CustomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28137911D591EFB0034027D /* CustomAnimation.swift */; };
 		E28137951D5945440034027D /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28137941D5945440034027D /* Wallet.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E2159FBF1D64FC4800F87231 /* NSMutableData+Bitcoin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSMutableData+Bitcoin.swift"; path = "Extensions/NSMutableData+Bitcoin.swift"; sourceTree = "<group>"; };
 		E227A2DD1D4D4DC1005FD298 /* Tangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tangle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E227A2E01D4D4DC1005FD298 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E227A2EC1D4D4DC1005FD298 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,7 +56,7 @@
 		E256B8441D5677F2009089B8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingViewController.swift; path = Onboarding/OnboardingViewController.swift; sourceTree = "<group>"; };
 		E256B8451D5677F2009089B8 /* RootOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootOnboardingViewController.swift; path = Onboarding/RootOnboardingViewController.swift; sourceTree = "<group>"; };
 		E256B84B1D56780E009089B8 /* CreateWallet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreateWallet.storyboard; path = "Create Wallet/CreateWallet.storyboard"; sourceTree = "<group>"; };
-		E26358EB1D5D3D0E0093C35B /* NSData+ConvertData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSData+ConvertData.swift"; path = "Extensions/NSData+ConvertData.swift"; sourceTree = "<group>"; };
+		E26358EB1D5D3D0E0093C35B /* NSData+Bitcoin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSData+Bitcoin.swift"; path = "Extensions/NSData+Bitcoin.swift"; sourceTree = "<group>"; };
 		E281378F1D5913B60034027D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extensions.swift"; path = "Extensions/UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		E28137911D591EFB0034027D /* CustomAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnimation.swift; sourceTree = "<group>"; };
 		E28137941D5945440034027D /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Wallet.swift; path = "Data Model/Wallet.swift"; sourceTree = "<group>"; };
@@ -184,7 +186,8 @@
 			children = (
 				E28137911D591EFB0034027D /* CustomAnimation.swift */,
 				E281378F1D5913B60034027D /* UIColor+Extensions.swift */,
-				E26358EB1D5D3D0E0093C35B /* NSData+ConvertData.swift */,
+				E26358EB1D5D3D0E0093C35B /* NSData+Bitcoin.swift */,
+				E2159FBF1D64FC4800F87231 /* NSMutableData+Bitcoin.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -319,7 +322,7 @@
 			files = (
 				E28137951D5945440034027D /* Wallet.swift in Sources */,
 				E28252F61D5BD39900E12E79 /* WalletHelper.swift in Sources */,
-				E26358EC1D5D3D0E0093C35B /* NSData+ConvertData.swift in Sources */,
+				E26358EC1D5D3D0E0093C35B /* NSData+Bitcoin.swift in Sources */,
 				E2C8B2411D4FE8CB00B71642 /* WalletViewController.swift in Sources */,
 				E256B8491D5677F2009089B8 /* OnboardingViewController.swift in Sources */,
 				E28137921D591EFB0034027D /* CustomAnimation.swift in Sources */,
@@ -329,6 +332,7 @@
 				E2C8B23E1D4FE8B700B71642 /* GenerateMasterKeyViewController.swift in Sources */,
 				E256B8481D5677F2009089B8 /* OnboardingModelController.swift in Sources */,
 				E256B84A1D5677F2009089B8 /* RootOnboardingViewController.swift in Sources */,
+				E2159FC01D64FC4800F87231 /* NSMutableData+Bitcoin.swift in Sources */,
 				E28252F31D5BCC9500E12E79 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

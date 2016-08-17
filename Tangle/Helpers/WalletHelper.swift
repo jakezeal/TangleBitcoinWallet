@@ -50,39 +50,7 @@ final class WalletHelper {
         return phrase
     }
     
-    /**
-     @name  getKeychainData
-     
-     - parameter key:   String
-     - parameter error: inout NSError?
-     
-     - returns: NSData?
-     */
-    func getKeychainData(key: String, inout error: NSError?) -> NSData? {
-        let query: [String: AnyObject] = [String(kSecClass): String(kSecClassGenericPassword),
-                                          String(kSecAttrService): String(WalletHelperConstants.SecurityAttributeService),
-                                          String(kSecAttrAccount): String(key),
-                                          String(kSecReturnData): true]
-        
-        var result: AnyObject?
-        
-        let status: OSStatus = SecItemCopyMatching(query as CFDictionaryRef, &result)
-        
-        print("Time data after setting Keychain: \(result as? NSData)")
-        
-        guard status != errSecItemNotFound else { return nil }
-        guard status != noErr else { return result as? NSData }
-        
-        error = NSError(domain: NSOSStatusErrorDomain, code: Int(status), userInfo: nil)
-        print("SecItemCopyMatching Error: \(error?.localizedDescription)")
-        
-        return nil
-    }
-    
-}
-
-// MARK: - Private Helper Methods
-private extension WalletHelper {
+    // MARK: - Set Keychain Data
     /**
      @name  setKeychainData
      
@@ -92,7 +60,7 @@ private extension WalletHelper {
      
      - returns: Bool
      */
-    func setKeychainData(data: NSData, key: String, authenticated: Bool) -> Bool {
+    private func setKeychainData(data: NSData, key: String, authenticated: Bool) -> Bool {
         
         let accessible = authenticated
             ? String(kSecAttrAccessibleWhenUnlockedThisDeviceOnly)
@@ -132,6 +100,35 @@ private extension WalletHelper {
         print("SecItemUpdate Error: \(error)")
         
         return false
+    }
+    
+    /**
+     @name  getKeychainData
+     
+     - parameter key:   String
+     - parameter error: inout NSError?
+     
+     - returns: NSData?
+     */
+    func getKeychainData(key: String, inout error: NSError?) -> NSData? {
+        let query: [String: AnyObject] = [String(kSecClass): String(kSecClassGenericPassword),
+                                          String(kSecAttrService): String(WalletHelperConstants.SecurityAttributeService),
+                                          String(kSecAttrAccount): String(key),
+                                          String(kSecReturnData): true]
+        
+        var result: AnyObject?
+        
+        let status: OSStatus = SecItemCopyMatching(query as CFDictionaryRef, &result)
+        
+        print("Time data after setting Keychain: \(result as? NSData)")
+        
+        guard status != errSecItemNotFound else { return nil }
+        guard status != noErr else { return result as? NSData }
+        
+        error = NSError(domain: NSOSStatusErrorDomain, code: Int(status), userInfo: nil)
+        print("SecItemCopyMatching Error: \(error?.localizedDescription)")
+        
+        return nil
     }
     
 }

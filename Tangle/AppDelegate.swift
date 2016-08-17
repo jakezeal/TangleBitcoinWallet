@@ -86,7 +86,7 @@ private extension AppDelegate {
         
         let startViewController: UIViewController
     
-        if true {
+        if false {
             // If it is the user's first time on application, show onboarding
             let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
             startViewController = storyboard.instantiateViewControllerWithIdentifier("RootOnboardingViewController") as! RootOnboardingViewController

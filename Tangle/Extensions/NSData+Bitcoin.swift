@@ -1,5 +1,5 @@
 //
-//  NSData+ConvertData.swift
+//  NSData+Bitcoin.swift
 //  Tangle
 //
 //  Created by Jake on 8/11/16.

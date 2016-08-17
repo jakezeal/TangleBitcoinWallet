@@ -49,6 +49,8 @@ final class CustomAnimation {
      - parameter maxRotation: CGFloat
      - parameter maxPosition: CGFloat
      - parameter duration:    Double
+     
+     - returns: CustomAnimation
      */
     init(view: UIView, afterDelay delay: Double, startDirection direction: Direction, repetitions: Int, maxRotation: CGFloat, maxPosition: CGFloat, duration: Double) {
         self.view = view
@@ -60,7 +62,47 @@ final class CustomAnimation {
         self.duration = duration
     }
     
+    /**
+     @name  view:withDuration
+     
+     - parameter view:     UIView
+     - parameter duration: Double
+     
+     - returns: CustomAnimation
+     */
+    init(view: UIView, withDuration duration: Double) {
+        self.view = view
+        self.duration = duration
+    }
+    
     // MARK: - Animation Methods
+    /**
+     @name  animateIndicatorToReceive
+     */
+    func animateIndicatorToReceive() {
+        UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseIn, animations: {
+            
+            // Set Position
+            if self.view.frame.origin.x == self.view.frame.width {
+                self.view.frame.origin.x -= self.view.frame.width
+            }
+            
+            }, completion: nil)
+    }
+    
+    /**
+     @name  animateIndicatorToSend
+     */
+    func animateIndicatorToSend() {
+        
+        UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseIn, animations: {
+            
+            // Set Position
+            self.view.frame.origin.x = self.view.frame.width
+            
+            }, completion: nil)
+    }
+    
     /**
      @name  shakeAnimation
      */

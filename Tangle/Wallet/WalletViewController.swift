@@ -18,6 +18,7 @@ final class WalletViewController: UIViewController {
     var mode = Mode(rawValue: 0)
     
     var bitcoinLogoImageViewShakeAnimation: CustomAnimation!
+    var indicatorButtonAnimation: CustomAnimation!
     var refreshRotateAnimation: CustomAnimation!
     
     // MARK: - IBOutlets
@@ -31,6 +32,7 @@ final class WalletViewController: UIViewController {
     // Buttons to change view
     @IBOutlet weak var receiveButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var indicatorButton: UIButton!
     
     @IBOutlet weak var actionView: UIView!
     
@@ -53,6 +55,7 @@ final class WalletViewController: UIViewController {
     @IBAction func receiveButtonTapped(sender: AnyObject) {
         hideSendFunctionality()
         unhideReceiveFunctionality()
+        indicatorButtonAnimation.animateIndicatorToReceive()
     }
     
     /**
@@ -63,6 +66,7 @@ final class WalletViewController: UIViewController {
     @IBAction func sendButtonTapped(sender: AnyObject) {
         hideReceiveFunctionality()
         unhideSendFunctionality()
+        indicatorButtonAnimation.animateIndicatorToSend()
     }
     
     /**
@@ -99,6 +103,7 @@ final class WalletViewController: UIViewController {
         prepareAccountBalanceTitleLabel()
         prepareBitcoinImageViewTapGestureRecognizer()
         prepareBitcoinLogoImageViewShakeAnimation()
+        prepareIndicatorAnimation()
         prepareStackViewShadow()
         preparePublicKeyTapGestureRecognizer()
         prepareRefreshShakeAnimation()
@@ -142,6 +147,13 @@ private extension WalletViewController {
      */
     func prepareBitcoinLogoImageViewShakeAnimation() {
         bitcoinLogoImageViewShakeAnimation = CustomAnimation(view: bitcoinLogoImageView, afterDelay: 0, startDirection: .Left, repetitions: 6, maxRotation: 0.15, maxPosition: 20, duration: 0.15)
+    }
+    
+    /**
+     @name  prepareIndicatorAnimation
+     */
+    func prepareIndicatorAnimation() {
+        indicatorButtonAnimation = CustomAnimation(view: indicatorButton, withDuration: 0.2)
     }
     
     /**

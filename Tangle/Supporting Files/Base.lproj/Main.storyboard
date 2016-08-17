@@ -111,7 +111,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBk-ZV-rBu">
-                                <rect key="frame" x="0.0" y="265" width="600" height="335"/>
+                                <rect key="frame" x="0.0" y="273" width="600" height="327"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="QRCode" translatesAutoresizingMaskIntoConstraints="NO" id="BSH-Or-Cm8">
                                         <rect key="frame" x="198" y="30" width="205" height="205"/>
@@ -172,6 +172,13 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsY-zZ-v3X">
+                                        <rect key="frame" x="0.0" y="-8" width="300" height="8"/>
+                                        <color key="backgroundColor" red="0.23137254900000001" green="0.52156862749999999" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="v4f-Qn-wtw"/>
+                                        </constraints>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -183,6 +190,7 @@
                                     <constraint firstItem="kOT-21-j6Z" firstAttribute="top" secondItem="bBk-ZV-rBu" secondAttribute="top" constant="62" id="C2h-2E-u3l"/>
                                     <constraint firstItem="ovm-z5-1UJ" firstAttribute="top" secondItem="tyb-ET-iOg" secondAttribute="bottom" constant="8" id="COB-Dv-boG"/>
                                     <constraint firstItem="51Q-Yk-AIg" firstAttribute="top" secondItem="kOT-21-j6Z" secondAttribute="bottom" constant="20" id="P4u-h3-ht2"/>
+                                    <constraint firstItem="WsY-zZ-v3X" firstAttribute="leading" secondItem="bBk-ZV-rBu" secondAttribute="leading" id="Qt2-3J-zeh"/>
                                     <constraint firstItem="51Q-Yk-AIg" firstAttribute="centerX" secondItem="bBk-ZV-rBu" secondAttribute="centerX" id="TMc-LK-tL9"/>
                                     <constraint firstItem="ovm-z5-1UJ" firstAttribute="centerX" secondItem="bBk-ZV-rBu" secondAttribute="centerX" id="UH2-Lp-HFE"/>
                                     <constraint firstItem="sVV-YQ-KEK" firstAttribute="centerX" secondItem="bBk-ZV-rBu" secondAttribute="centerX" id="UQ0-99-nOO"/>
@@ -195,10 +203,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="8w3-Cm-axT" secondAttribute="trailing" id="022-Ad-6uM"/>
-                            <constraint firstItem="bBk-ZV-rBu" firstAttribute="top" secondItem="8w3-Cm-axT" secondAttribute="bottom" id="3Bp-OS-64F"/>
+                            <constraint firstItem="bBk-ZV-rBu" firstAttribute="top" secondItem="8w3-Cm-axT" secondAttribute="bottom" constant="8" id="3Bp-OS-64F"/>
                             <constraint firstItem="6Jy-CV-ARV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="6e9-3D-6jK"/>
                             <constraint firstAttribute="trailing" secondItem="6Jy-CV-ARV" secondAttribute="trailing" id="IZY-g0-zdV"/>
                             <constraint firstItem="8w3-Cm-axT" firstAttribute="top" secondItem="6Jy-CV-ARV" secondAttribute="bottom" id="Mdp-UD-7z0"/>
+                            <constraint firstItem="WsY-zZ-v3X" firstAttribute="top" secondItem="0jB-XA-THr" secondAttribute="bottom" id="PRZ-be-N8f"/>
+                            <constraint firstItem="WsY-zZ-v3X" firstAttribute="width" secondItem="0jB-XA-THr" secondAttribute="width" id="RkW-0U-6Zp"/>
                             <constraint firstItem="8w3-Cm-axT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XA2-LO-mXH"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bBk-ZV-rBu" secondAttribute="bottom" id="bPF-Xl-fvQ"/>
                             <constraint firstAttribute="trailing" secondItem="bBk-ZV-rBu" secondAttribute="trailing" id="dbr-YG-toy"/>
@@ -213,6 +223,7 @@
                         <outlet property="actionView" destination="bBk-ZV-rBu" id="epD-zb-W8B"/>
                         <outlet property="bitcoinLogoImageView" destination="XHM-YX-Gzv" id="TfN-py-q5W"/>
                         <outlet property="forwardAddressTextField" destination="51Q-Yk-AIg" id="KsZ-ct-Ci5"/>
+                        <outlet property="indicatorButton" destination="WsY-zZ-v3X" id="fgB-U1-Ala"/>
                         <outlet property="publicKeyLabel" destination="tyb-ET-iOg" id="kzt-kL-cFV"/>
                         <outlet property="qrCodeImageView" destination="BSH-Or-Cm8" id="P9W-R0-hY1"/>
                         <outlet property="receiveButton" destination="0jB-XA-THr" id="Su0-df-7Ui"/>
