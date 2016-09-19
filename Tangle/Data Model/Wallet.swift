@@ -19,34 +19,35 @@ final class Wallet {
     
     let passcodeEnabled = false
     
-    /**
-     @name  generateKeyInWalletWithEntropySeed:andPassword
-     
-     - parameter seed:     NSData
-     - parameter password: String
-     */
     init(generateKeyInWalletWithEntropySeed seed: NSData, andPassword password: String) {
         
+        // create another init for keychain retreival
+        
         mnemonic = BTCMnemonic(entropy: seed, password: password, wordListType: .English)
+        
+        
+        print("Words: \(mnemonic.words) \n")
+        print("Seed: \(mnemonic.seed) \n")
+        print("Entropy: \(mnemonic.entropy) \n")
+        
         self.seed = mnemonic.seed
         keychain = BTCKeychain(seed: mnemonic.seed)
         
-        var mnemonicString = ""
+        var mnemonicWords = ""
         
         if let mnemonic = mnemonic {
             
             for word in mnemonic.words {
                 let word = word as! String
-                mnemonicString += word
+                mnemonicWords += word
                 
                 if word != mnemonic.words.last as! String {
-                    mnemonicString += " "
+                    mnemonicWords += " "
                 }
             }
         }
         
-        self.mnemonicString = mnemonicString
-        print(mnemonicString)
+        self.mnemonicString = mnemonicWords
+        print("Words String: \(mnemonicWords) \n")
     }
-    
 }
