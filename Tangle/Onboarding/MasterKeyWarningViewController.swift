@@ -19,10 +19,10 @@ class MasterKeyWarningViewController: UIViewController {
      
      - parameter sender: AnyObject
      */
-    @IBAction func displayMasterKeyButtonTapped(sender: AnyObject) {
+    @IBAction func displayMasterKeyButtonTapped(_ sender: AnyObject) {
         print("Display Master Key Button Tapped -> Generate Master Key View Controller \n")
         transitionToGenerateMasterKeyViewController()
-        displayMasterKeyButton.enabled = false
+        displayMasterKeyButton.isEnabled = false
     }
     
     // MARK: - View Lifecycles
@@ -48,9 +48,9 @@ class MasterKeyWarningViewController: UIViewController {
      */
     func transitionToGenerateMasterKeyViewController() {
         let storyboard = UIStoryboard(name: "CreateWallet", bundle: nil)
-        let generateMasterKeyViewController = storyboard.instantiateViewControllerWithIdentifier("GenerateMasterKeyViewController") as! GenerateMasterKeyViewController
+        let generateMasterKeyViewController = storyboard.instantiateViewController(withIdentifier: "GenerateMasterKeyViewController") as! GenerateMasterKeyViewController
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         appDelegate.changeRootViewController(generateMasterKeyViewController)
     }

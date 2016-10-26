@@ -14,7 +14,7 @@ final class WalletHelper {
     static let sharedInstance = WalletHelper()
     
     // MARK: - Initializers
-    private init() {}
+    fileprivate init() {}
     
     // MARK: - Helper Methods
     /**
@@ -26,36 +26,37 @@ final class WalletHelper {
         
         // Create initial entropy / seed -> Equivalent to BTCRandomDataWithLength
         let entropy = NSMutableData(length: WalletHelperConstants.SeedEntropyLength)
-        SecRandomCopyBytes(kSecRandomDefault, entropy!.length, UnsafeMutablePointer<UInt8>(entropy!.mutableBytes))
+        SecRandomCopyBytes(kSecRandomDefault, entropy!.length, entropy!.mutableBytes.assumingMemoryBound(to: UInt8.self))
         
-        let keychain = BTCKeychain(seed: entropy, network: BTCNetwork.testnet())
+//        let keychain = BTCKeychain(seed: entropy as Data!, network: BTCNetwork.testnet())
         
-        var time: NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        var time: TimeInterval = Date.timeIntervalSinceReferenceDate
         
-        let mnemonic = BTCMnemonic(entropy: entropy, password: "", wordListType: .English)
+        let mnemonic = BTCMnemonic(entropy: entropy as Data!, password: "", wordListType: .english)
         
         var phrase = ""
         
-        print("Mnemonic Seed: \(mnemonic.seed)")
-        print("Entropy: \(mnemonic.entropy)\n")
-        print("Keychain: \(mnemonic.keychain)\n")
-        print("Data: \(mnemonic.data)\n")
-        print("DataWithSeed: \(mnemonic.dataWithSeed)\n\n\n\n")
+        print("Mnemonic Seed: \(mnemonic?.seed)")
+        print("Entropy: \(mnemonic?.entropy)\n")
+        print("Keychain: \(mnemonic?.keychain)\n")
+        print("Data: \(mnemonic?.data)\n")
+        print("DataWithSeed: \(mnemonic?.dataWithSeed)\n\n\n\n")
         
-        for word in mnemonic.words {
+        for word in (mnemonic?.words)! {
             let word = word as! String
             phrase += word
             
-            if word != mnemonic.words.last as! String {
+            if word != mnemonic?.words.last as! String {
                 phrase += " "
             }
         }
         
         // We store the wallet creation time on the keychain because keychain data persists even when an app is deleted
-        let data = NSData(bytes: &time, length: sizeof(time.dynamicType))
-        print("Time before setting Keychain: \(time), data: \(data)")
-        setKeychainData(data, key: WalletHelperConstants.SeedCreationTime, authenticated: false)
         
+        let data = Data(bytes: &time, count: MemoryLayout<TimeInterval>.size)
+        print("Time before setting Keychain: \(time), data: \(data)")
+        let bool = setKeychainData(data: data, key: WalletHelperConstants.SeedCreationTime, authenticated: false)
+        print("Keychain data set: \(bool)")
         return phrase
     }
     
@@ -69,7 +70,7 @@ final class WalletHelper {
      
      - returns: Bool
      */
-    private func setKeychainData(data: NSData, key: String, authenticated: Bool) -> Bool {
+    fileprivate func setKeychainData(data: Data, key: String, authenticated: Bool) -> Bool {
         
         let accessible = authenticated
             ? String(kSecAttrAccessibleWhenUnlockedThisDeviceOnly)
@@ -86,7 +87,7 @@ final class WalletHelper {
                         String(kSecAttrService): WalletHelperConstants.SecurityAttributeService,
                         String(kSecAttrAccount): key,
                         String(kSecAttrAccessible): accessible,
-                        String(kSecValueData): data]
+                        String(kSecValueData): data] as [String : Any]
             let status = SecItemAdd(item as CFDictionary, nil)
             
             guard status != noErr else { return true }
@@ -99,9 +100,9 @@ final class WalletHelper {
         
         
         let update = [String(kSecAttrAccessible): accessible,
-                      String(kSecValueData): data]
+                      String(kSecValueData): data] as [String : Any]
         
-        let status = SecItemUpdate(query as CFDictionaryRef, update as CFDictionaryRef)
+        let status = SecItemUpdate(query as CFDictionary, update as CFDictionary)
         
         guard status != noErr else { return true }
         
@@ -119,20 +120,22 @@ final class WalletHelper {
      
      - returns: NSData?
      */
-    func getKeychainData(key: String, inout error: NSError?) -> NSData? {
-        let query: [String: AnyObject] = [String(kSecClass): String(kSecClassGenericPassword),
-                                          String(kSecAttrService): String(WalletHelperConstants.SecurityAttributeService),
-                                          String(kSecAttrAccount): String(key),
+    func getKeychainData(key: String, error: inout NSError?) -> Data? {
+        let secClass = String(kSecClass)
+        let secClassGenericPassword = String(kSecClassGenericPassword)
+        let query: [String: Any] = [secClass: secClassGenericPassword,
+                                          String(kSecAttrService): WalletHelperConstants.SecurityAttributeService,
+                                          String(kSecAttrAccount): key,
                                           String(kSecReturnData): true]
         
         var result: AnyObject?
+        let status: OSStatus = SecItemCopyMatching(query as CFDictionary, &result)
+//        let status: OSStatus = SecItemCopyMatching(query as CFDictionary, result as CFTypeRef?)
         
-        let status: OSStatus = SecItemCopyMatching(query as CFDictionaryRef, &result)
-        
-        print("Time data after setting Keychain: \(result as? NSData)")
+        print("Time data after setting Keychain: \(result as? Data)")
         
         guard status != errSecItemNotFound else { return nil }
-        guard status != noErr else { return result as? NSData }
+        guard status != noErr else { return result as? Data }
         
         error = NSError(domain: NSOSStatusErrorDomain, code: Int(status), userInfo: nil)
         print("SecItemCopyMatching Error: \(error?.localizedDescription)")

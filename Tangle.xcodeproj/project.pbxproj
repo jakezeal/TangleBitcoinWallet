@@ -17,7 +17,7 @@
 		E256B8491D5677F2009089B8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256B8441D5677F2009089B8 /* OnboardingViewController.swift */; };
 		E256B84A1D5677F2009089B8 /* RootOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256B8451D5677F2009089B8 /* RootOnboardingViewController.swift */; };
 		E256B84C1D56780E009089B8 /* CreateWallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E256B84B1D56780E009089B8 /* CreateWallet.storyboard */; };
-		E26358EC1D5D3D0E0093C35B /* NSData+Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26358EB1D5D3D0E0093C35B /* NSData+Bitcoin.swift */; };
+		E26358EC1D5D3D0E0093C35B /* Data+Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26358EB1D5D3D0E0093C35B /* Data+Bitcoin.swift */; };
 		E28137901D5913B60034027D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281378F1D5913B60034027D /* UIColor+Extensions.swift */; };
 		E28137921D591EFB0034027D /* CustomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28137911D591EFB0034027D /* CustomAnimation.swift */; };
 		E28137951D5945440034027D /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28137941D5945440034027D /* Wallet.swift */; };
@@ -56,7 +56,7 @@
 		E256B8441D5677F2009089B8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingViewController.swift; path = Onboarding/OnboardingViewController.swift; sourceTree = "<group>"; };
 		E256B8451D5677F2009089B8 /* RootOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootOnboardingViewController.swift; path = Onboarding/RootOnboardingViewController.swift; sourceTree = "<group>"; };
 		E256B84B1D56780E009089B8 /* CreateWallet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreateWallet.storyboard; path = "Create Wallet/CreateWallet.storyboard"; sourceTree = "<group>"; };
-		E26358EB1D5D3D0E0093C35B /* NSData+Bitcoin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSData+Bitcoin.swift"; path = "Extensions/NSData+Bitcoin.swift"; sourceTree = "<group>"; };
+		E26358EB1D5D3D0E0093C35B /* Data+Bitcoin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Data+Bitcoin.swift"; path = "Extensions/Data+Bitcoin.swift"; sourceTree = "<group>"; };
 		E281378F1D5913B60034027D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extensions.swift"; path = "Extensions/UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		E28137911D591EFB0034027D /* CustomAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnimation.swift; sourceTree = "<group>"; };
 		E28137941D5945440034027D /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Wallet.swift; path = "Data Model/Wallet.swift"; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 			children = (
 				E28137911D591EFB0034027D /* CustomAnimation.swift */,
 				E281378F1D5913B60034027D /* UIColor+Extensions.swift */,
-				E26358EB1D5D3D0E0093C35B /* NSData+Bitcoin.swift */,
+				E26358EB1D5D3D0E0093C35B /* Data+Bitcoin.swift */,
 				E2159FBF1D64FC4800F87231 /* NSMutableData+Bitcoin.swift */,
 			);
 			name = Extensions;
@@ -267,9 +267,11 @@
 					E227A2DC1D4D4DC1005FD298 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = MPF357W934;
+						LastSwiftMigration = 0800;
 					};
 					E227A2F01D4D4DC1005FD298 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = E227A2DC1D4D4DC1005FD298;
 					};
 				};
@@ -322,7 +324,7 @@
 			files = (
 				E28137951D5945440034027D /* Wallet.swift in Sources */,
 				E28252F61D5BD39900E12E79 /* WalletHelper.swift in Sources */,
-				E26358EC1D5D3D0E0093C35B /* NSData+Bitcoin.swift in Sources */,
+				E26358EC1D5D3D0E0093C35B /* Data+Bitcoin.swift in Sources */,
 				E2C8B2411D4FE8CB00B71642 /* WalletViewController.swift in Sources */,
 				E256B8491D5677F2009089B8 /* OnboardingViewController.swift in Sources */,
 				E28137921D591EFB0034027D /* CustomAnimation.swift in Sources */,
@@ -475,6 +477,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tangle/Tangle-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -495,6 +498,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jakezeal.Tangle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tangle/Tangle-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -507,6 +511,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jakezeal.TangleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tangle.app/Tangle";
 			};
 			name = Debug;
@@ -519,6 +524,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jakezeal.TangleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tangle.app/Tangle";
 			};
 			name = Release;

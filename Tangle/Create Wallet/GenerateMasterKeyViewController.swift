@@ -11,7 +11,7 @@ import UIKit
 class GenerateMasterKeyViewController: UIViewController {
     
     // MARK: - Properties
-    private weak var appDelegate: AppDelegate! = UIApplication.sharedApplication().delegate as! AppDelegate
+    fileprivate weak var appDelegate: AppDelegate! = UIApplication.shared.delegate as! AppDelegate
     
     // MARK: - IBOutlets
     // TODO: Create a secure version of UILabel and use it for seedLabel, but make sure there's an accessibility work around
@@ -24,10 +24,10 @@ class GenerateMasterKeyViewController: UIViewController {
      
      - parameter sender: AnyObject
      */
-    @IBAction func createWalletButtonTapped(sender: AnyObject) {
+    @IBAction func createWalletButtonTapped(_ sender: AnyObject) {
         print("Create Wallet Button Tapped -> Wallet View Controller \n")
         transitionToWalletViewController()
-        createWalletButton.enabled = false
+        createWalletButton.isEnabled = false
     }
     
     // MARK: - View Lifecycles
@@ -47,7 +47,7 @@ class GenerateMasterKeyViewController: UIViewController {
      
      - parameter animated: Bool
      */
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // Don't leave the seed phrase laying around in memory any longer than necessary
         mnemonicWordsLabel.text = ""
@@ -78,9 +78,9 @@ private extension GenerateMasterKeyViewController {
      */
     func transitionToWalletViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let walletViewController = storyboard.instantiateViewControllerWithIdentifier("WalletViewController") as! WalletViewController
+        let walletViewController = storyboard.instantiateViewController(withIdentifier: "WalletViewController") as! WalletViewController
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         appDelegate.changeRootViewController(walletViewController)
     }

@@ -52,7 +52,7 @@ final class WalletViewController: UIViewController {
      
      - parameter sender: AnyObject
      */
-    @IBAction func receiveButtonTapped(sender: AnyObject) {
+    @IBAction func receiveButtonTapped(_ sender: AnyObject) {
         hideSendFunctionality()
         unhideReceiveFunctionality()
         indicatorButtonAnimation.animateIndicatorToReceive()
@@ -63,7 +63,7 @@ final class WalletViewController: UIViewController {
      
      - parameter sender: AnyObject
      */
-    @IBAction func sendButtonTapped(sender: AnyObject) {
+    @IBAction func sendButtonTapped(_ sender: AnyObject) {
         hideReceiveFunctionality()
         unhideSendFunctionality()
         indicatorButtonAnimation.animateIndicatorToSend()
@@ -74,7 +74,7 @@ final class WalletViewController: UIViewController {
      
      - parameter sender: AnyObject
      */
-    @IBAction func refreshButtonTapped(sender: AnyObject) {
+    @IBAction func refreshButtonTapped(_ sender: AnyObject) {
         // TODO: Generate and display new public key
         refreshRotateAnimation.rotateAnimation()
     }
@@ -84,7 +84,7 @@ final class WalletViewController: UIViewController {
      
      - parameter sender: AnyObject
      */
-    @IBAction func sendBitcoinButtonTapped(sender: AnyObject) {
+    @IBAction func sendBitcoinButtonTapped(_ sender: AnyObject) {
         
         forwardAddressTextField.resignFirstResponder()
         sendAmountTextField.resignFirstResponder()
@@ -117,13 +117,13 @@ final class WalletViewController: UIViewController {
 }
 
 private extension WalletViewController {
-
+    
     // MARK: - Preparations
     /**
      @name  prepareStatusBar
      */
     func prepareStatusBar() {
-        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        UIApplication.shared.statusBarStyle = .lightContent
     }
     
     /**
@@ -146,7 +146,7 @@ private extension WalletViewController {
      @name  prepareBitcoinLogoImageViewShakeAnimation
      */
     func prepareBitcoinLogoImageViewShakeAnimation() {
-        bitcoinLogoImageViewShakeAnimation = CustomAnimation(view: bitcoinLogoImageView, afterDelay: 0, startDirection: .Left, repetitions: 6, maxRotation: 0.15, maxPosition: 20, duration: 0.15)
+        bitcoinLogoImageViewShakeAnimation = CustomAnimation(view: bitcoinLogoImageView, afterDelay: 0, startDirection: .left, repetitions: 6, maxRotation: 0.15, maxPosition: 20, duration: 0.15)
     }
     
     /**
@@ -161,7 +161,7 @@ private extension WalletViewController {
      */
     func prepareStackViewShadow() {
         actionView.layer.masksToBounds = false
-        actionView.layer.shadowOffset = CGSizeMake(3, 3)
+        actionView.layer.shadowOffset = CGSize(width: 3, height: 3)
         actionView.layer.shadowRadius = 10
         actionView.layer.shadowOpacity = 0.2
     }
@@ -171,7 +171,7 @@ private extension WalletViewController {
      */
     func preparePublicKeyTapGestureRecognizer() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(copyPublicKey))
-        publicKeyLabel.userInteractionEnabled = true
+        publicKeyLabel.isUserInteractionEnabled = true
         publicKeyLabel.addGestureRecognizer(tap)
     }
     
@@ -179,7 +179,7 @@ private extension WalletViewController {
      @name  prepareRefreshShakeAnimation
      */
     func prepareRefreshShakeAnimation() {
-        refreshRotateAnimation = CustomAnimation(view: refreshButton, afterDelay: 0, startDirection: .Right, repetitions: 1, maxRotation: 1, maxPosition: 0, duration: 0.2)
+        refreshRotateAnimation = CustomAnimation(view: refreshButton, afterDelay: 0, startDirection: .right, repetitions: 1, maxRotation: 1, maxPosition: 0, duration: 0.2)
     }
     
     /**
@@ -201,7 +201,7 @@ private extension WalletViewController {
      */
     func getKeychainData() {
         var error: NSError?
-        let data = WalletHelper.sharedInstance.getKeychainData(WalletHelperConstants.SeedCreationTime, error: &error)
+        let data = WalletHelper.sharedInstance.getKeychainData(key: WalletHelperConstants.SeedCreationTime, error: &error)
         
         guard error == nil else {
             print(error)
@@ -209,8 +209,16 @@ private extension WalletViewController {
         }
         
         if let data = data {
-            let result: Double? = data.convertDataToType()
-            print("Convert Data to Type: \(result)")
+            
+            var mutableData = data
+            
+            let result: Int = mutableData.scanValue(start: 0, length: mutableData.count)
+            let stringResult = String(result)
+            
+            
+            print("Convert Data to Int: \(result)")
+            print("Convert Int to String: \(stringResult)")
+
         }
     }
     
@@ -222,18 +230,18 @@ extension WalletViewController {
      @name  hideSendFunctionality
      */
     func hideSendFunctionality() {
-        sendAmountTextField.hidden = true
-        forwardAddressTextField.hidden = true
-        sendBitcoinButton.hidden = true
+        sendAmountTextField.isHidden = true
+        forwardAddressTextField.isHidden = true
+        sendBitcoinButton.isHidden = true
     }
     
     /**
      @name  unhideReceiveFunctionality
      */
     func unhideReceiveFunctionality() {
-        qrCodeImageView.hidden = false
-        publicKeyLabel.hidden = false
-        refreshButton.hidden = false
+        qrCodeImageView.isHidden = false
+        publicKeyLabel.isHidden = false
+        refreshButton.isHidden = false
     }
     
     // Send Button Tapped
@@ -241,25 +249,25 @@ extension WalletViewController {
      @name  hideReceiveFunctionality
      */
     func hideReceiveFunctionality() {
-        qrCodeImageView.hidden = true
-        publicKeyLabel.hidden = true
-        refreshButton.hidden = true
+        qrCodeImageView.isHidden = true
+        publicKeyLabel.isHidden = true
+        refreshButton.isHidden = true
     }
     
     /**
      @name  unhideSendFunctionality
      */
     func unhideSendFunctionality() {
-        sendAmountTextField.hidden = false
-        forwardAddressTextField.hidden = false
-        sendBitcoinButton.hidden = false
+        sendAmountTextField.isHidden = false
+        forwardAddressTextField.isHidden = false
+        sendBitcoinButton.isHidden = false
     }
     
     /**
      @name  copyPublicKey
      */
     func copyPublicKey() {
-        UIPasteboard.generalPasteboard().string = publicKeyLabel.text
+        UIPasteboard.general.string = publicKeyLabel.text
         print("Public Key Copied")
     }
     
@@ -277,14 +285,14 @@ extension WalletViewController {
      @name  prepareNSNotificationCenterObserversForKeyboard
      */
     func prepareNSNotificationCenterObserversForKeyboard() {
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector: #selector(keyboardWillShow),
-                                                         name: UIKeyboardWillShowNotification,
-                                                         object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector: #selector(keyboardWillHide),
-                                                         name: UIKeyboardWillHideNotification,
-                                                         object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: NSNotification.Name.UIKeyboardWillShow,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: NSNotification.Name.UIKeyboardWillHide,
+                                               object: nil)
     }
     
     /**
@@ -292,8 +300,8 @@ extension WalletViewController {
      
      - parameter notification: NSNotification
      */
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if view.bounds.origin.y == 0 {
                 view.bounds.origin.y += keyboardSize.height
             }
@@ -305,7 +313,7 @@ extension WalletViewController {
      
      - parameter notification: NSNotification
      */
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(_ notification: Notification) {
         view.bounds.origin.y = 0
     }
 }
@@ -317,7 +325,7 @@ extension WalletViewController {
      
      - returns: Bool
      */
-    override func canBecomeFirstResponder() -> Bool {
+    override var canBecomeFirstResponder : Bool {
         return true
     }
     
@@ -327,13 +335,13 @@ extension WalletViewController {
      - parameter motion: UIEventSubtype
      - parameter event:  UIEvent?
      */
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         
         mode = Mode(rawValue: abs(mode!.rawValue - 1))!
         
         switch mode! {
         case .normal:
-            actionView.backgroundColor = UIColor.whiteColor()
+            actionView.backgroundColor = UIColor.white
             break
         case .mix:
             actionView.backgroundColor = UIColor.offWhiteColor()
@@ -353,7 +361,7 @@ extension WalletViewController: UITextFieldDelegate {
      
      - returns: Bool
      */
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         if textField == sendAmountTextField {
             forwardAddressTextField.becomeFirstResponder()
@@ -367,7 +375,7 @@ extension WalletViewController: UITextFieldDelegate {
      - parameter touches: Set<UITouch>
      - parameter event:   UIEvent?
      */
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         actionView.endEditing(true)
     }
     

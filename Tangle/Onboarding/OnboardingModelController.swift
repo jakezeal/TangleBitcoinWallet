@@ -46,14 +46,14 @@ extension OnboardingModelController {
      
      - returns: OnboardingViewController?
      */
-    func viewControllerAtIndex(index: Int, storyboard: UIStoryboard) -> OnboardingViewController? {
+    func viewControllerAtIndex(_ index: Int, storyboard: UIStoryboard) -> OnboardingViewController? {
         // Return the data view controller for the given index.
         if (titles.count == 0) || (index >= titles.count) {
             return nil
         }
         
         // Create a new view controller and pass suitable data.
-        let onboardingViewController = storyboard.instantiateViewControllerWithIdentifier("OnboardingViewController") as! OnboardingViewController
+        let onboardingViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController") as! OnboardingViewController
         onboardingViewController.titleText = titles[index]
         onboardingViewController.summary = summaries[index]
         onboardingViewController.imageName = imageNames[index]
@@ -73,9 +73,9 @@ extension OnboardingModelController {
      
      - returns: Int
      */
-    func indexOfViewController(viewController: OnboardingViewController) -> Int {
+    func indexOfViewController(_ viewController: OnboardingViewController) -> Int {
         // Return the index of the given onboarding view controller.
-        return titles.indexOf(viewController.titleText) ?? NSNotFound
+        return titles.index(of: viewController.titleText) ?? NSNotFound
     }
 }
 
@@ -89,7 +89,7 @@ extension OnboardingModelController: UIPageViewControllerDataSource {
      
      - returns: UIViewController?
      */
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         var index = self.indexOfViewController(viewController as! OnboardingViewController)
         
         if (index == 0) || (index == NSNotFound) {
@@ -109,7 +109,7 @@ extension OnboardingModelController: UIPageViewControllerDataSource {
      
      - returns: UIViewController?
      */
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
         // TODO: Animate Logo Image View to center and hide Skip Button
         

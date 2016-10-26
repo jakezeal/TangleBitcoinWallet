@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      
      - returns: Bool
      */
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         prepareStartViewController()
         
@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      
      - parameter application: UIApplication
      */
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         // TODO: Pull information from API based on stored keys and update balance
     }
     
@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      - returns: Bool
      */
     // Disable extensions such as custom keyboards for security purposes
-    func application(application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: String) -> Bool {
+    func application(_ application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: UIApplicationExtensionPointIdentifier) -> Bool {
         return false
     }
     
@@ -62,11 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      
      - parameter viewController: UIViewController
      */
-    func changeRootViewController(viewController: UIViewController) {
+    func changeRootViewController(_ viewController: UIViewController) {
         
-        UIView.transitionWithView(window!,
+        UIView.transition(with: window!,
                                   duration: 0.5,
-                                  options: .TransitionFlipFromLeft,
+                                  options: .transitionFlipFromLeft,
                                   animations: {
                                     self.window?.rootViewController = viewController
             }, completion: nil)
@@ -89,11 +89,11 @@ private extension AppDelegate {
         if false {
             // If it is the user's first time on application, show onboarding
             let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-            startViewController = storyboard.instantiateViewControllerWithIdentifier("RootOnboardingViewController") as! RootOnboardingViewController
+            startViewController = storyboard.instantiateViewController(withIdentifier: "RootOnboardingViewController") as! RootOnboardingViewController
         } else {
             // If it is not their first time on application, skip to WalletViewController
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            startViewController = storyboard.instantiateViewControllerWithIdentifier("WalletViewController") as! WalletViewController
+            startViewController = storyboard.instantiateViewController(withIdentifier: "WalletViewController") as! WalletViewController
             
         }
         prepareWindow(startViewController)
@@ -104,8 +104,8 @@ private extension AppDelegate {
      
      - parameter startViewController: UIViewController
      */
-    func prepareWindow(startViewController: UIViewController) {
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+    func prepareWindow(_ startViewController: UIViewController) {
+        window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = startViewController
         window?.makeKeyAndVisible()
     }

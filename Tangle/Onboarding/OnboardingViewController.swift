@@ -28,9 +28,9 @@ class OnboardingViewController: UIViewController {
      
      - parameter sender: AnyObject
      */
-    @IBAction func generateKeysButtonTapped(sender: AnyObject) {
+    @IBAction func generateKeysButtonTapped(_ sender: AnyObject) {
         print("Generate Keys Button Tapped -> Master Key Warning View Controller \n")
-        generateKeysButton.enabled = false
+        generateKeysButton.isEnabled = false
     }
     
     // MARK: - View Lifecycles
@@ -39,7 +39,7 @@ class OnboardingViewController: UIViewController {
      
      - parameter animated: Bool
      */
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         prepareTitleLabel()
         prepareDescriptionLabel()
@@ -74,6 +74,6 @@ class OnboardingViewController: UIViewController {
      */
     func prepareGenerateKeysButton() {
         generateKeysButton.layer.cornerRadius = 5.0
-        generateKeysButton.hidden = isButtonHidden
+        generateKeysButton.isHidden = isButtonHidden
     }
 }

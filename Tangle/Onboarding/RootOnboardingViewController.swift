@@ -25,7 +25,7 @@ class RootOnboardingViewController: UIViewController {
      
      - parameter sender: AnyObject
      */
-    @IBAction func skipButtonTapped(sender: AnyObject) {
+    @IBAction func skipButtonTapped(_ sender: AnyObject) {
         //TODO: Skip Onboarding
         print("Skip Button Tapped")
     }
@@ -56,7 +56,7 @@ extension RootOnboardingViewController {
      */
     func prepareSkipButton() {
         skipButton.layer.zPosition = 100
-        view.bringSubviewToFront(skipButton)
+        view.bringSubview(toFront: skipButton)
         
     }
     
@@ -65,13 +65,13 @@ extension RootOnboardingViewController {
      */
     func preparePageViewController() {
         // Configure the page view controller and add it as a child view controller.
-        pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         pageViewController!.delegate = self
         
         let startViewController: OnboardingViewController = onboardingModelController.viewControllerAtIndex(0, storyboard: storyboard!)!
         let viewControllers = [startViewController]
         
-        pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
+        pageViewController!.setViewControllers(viewControllers, direction: .forward, animated: false, completion: nil)
         
         pageViewController!.dataSource = onboardingModelController
         
@@ -81,13 +81,13 @@ extension RootOnboardingViewController {
         // Set the page view controller's bounds using an inset rect so that self's view is visible around the edges of the pages.
         var pageViewRect = self.view.bounds
         
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            pageViewRect = CGRectInset(pageViewRect, 40.0, 40.0)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            pageViewRect = pageViewRect.insetBy(dx: 40.0, dy: 40.0)
         }
         
         self.pageViewController!.view.frame = pageViewRect
         
-        self.pageViewController!.didMoveToParentViewController(self)
+        self.pageViewController!.didMove(toParentViewController: self)
     }
 }
 
@@ -101,17 +101,17 @@ extension RootOnboardingViewController: UIPageViewControllerDelegate {
      
      - returns: UIPageViewControllerSpineLocation
      */
-    func pageViewController(pageViewController: UIPageViewController, spineLocationForInterfaceOrientation orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation {
+    func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation {
         
         // Portrait Orientation
-        if (orientation == .Portrait) || (orientation == .PortraitUpsideDown) || (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
+        if (orientation == .portrait) || (orientation == .portraitUpsideDown) || (UIDevice.current.userInterfaceIdiom == .phone) {
             // In portrait orientation or on iPhone: Set the spine position to "min" and the page view controller's view controllers array to contain just one view controller. Setting the spine position to 'UIPageViewControllerSpineLocationMid' in landscape orientation sets the doubleSided property to true, so set it to false here.
             let currentViewController = self.pageViewController!.viewControllers![0]
             let viewControllers = [currentViewController]
-            self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: {done in })
+            self.pageViewController!.setViewControllers(viewControllers, direction: .forward, animated: true, completion: {done in })
             
-            self.pageViewController!.doubleSided = false
-            return .Min
+            self.pageViewController!.isDoubleSided = false
+            return .min
         }
         
         // In landscape orientation: Set set the spine location to "mid" and the page view controller's view controllers array to contain two view controllers. If the current page is even, set it to contain the current and next view controllers; if it is odd, set the array to contain the previous and current view controllers.
@@ -121,16 +121,16 @@ extension RootOnboardingViewController: UIPageViewControllerDelegate {
         let indexOfCurrentViewController = onboardingModelController.indexOfViewController(currentViewController)
         
         if (indexOfCurrentViewController == 0) || (indexOfCurrentViewController % 2 == 0) {
-            let nextViewController = onboardingModelController.pageViewController(self.pageViewController!, viewControllerAfterViewController: currentViewController)
+            let nextViewController = onboardingModelController.pageViewController(self.pageViewController!, viewControllerAfter: currentViewController)
             viewControllers = [currentViewController, nextViewController!]
         } else {
-            let previousViewController = onboardingModelController.pageViewController(self.pageViewController!, viewControllerBeforeViewController: currentViewController)
+            let previousViewController = onboardingModelController.pageViewController(self.pageViewController!, viewControllerBefore: currentViewController)
             viewControllers = [previousViewController!, currentViewController]
         }
         
-        self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: nil)
+        self.pageViewController!.setViewControllers(viewControllers, direction: .forward, animated: true, completion: nil)
         
-        return .Mid
+        return .mid
     }
     
 }
