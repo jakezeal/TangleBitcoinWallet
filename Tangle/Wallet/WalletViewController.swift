@@ -204,7 +204,7 @@ private extension WalletViewController {
         let data = WalletHelper.sharedInstance.getKeychainData(key: WalletHelperConstants.SeedCreationTime, error: &error)
         
         guard error == nil else {
-            print(error)
+            print(error?.localizedDescription)
             return
         }
         
@@ -212,13 +212,14 @@ private extension WalletViewController {
             
             var mutableData = data
             
-            let result: Int = mutableData.scanValue(start: 0, length: mutableData.count)
+            let result: Double = mutableData.scanValue(start: 0, length: mutableData.count)
             let stringResult = String(result)
             
             
             print("Convert Data to Int: \(result)")
             print("Convert Int to String: \(stringResult)")
-
+            
+            
         }
     }
     

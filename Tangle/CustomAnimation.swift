@@ -189,7 +189,7 @@ final class CustomAnimation {
         rotateAnimation.toValue = CGFloat(M_PI * Double(maxRotation) * 2.0)
         
         // Rotate to the Left
-        //        rotateAnimation.toValue = CGFloat(M_PI * 4.0 * Double(factor))
+//                rotateAnimation.toValue = CGFloat(M_PI * 4.0 * Double(factor))
         
         rotateAnimation.duration = self.duration
         self.view.layer.add(rotateAnimation, forKey: nil)

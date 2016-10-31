@@ -25,14 +25,17 @@ final class WalletHelper {
     func generateRandomSeed() -> String {
         
         // Create initial entropy / seed -> Equivalent to BTCRandomDataWithLength
-        let entropy = NSMutableData(length: WalletHelperConstants.SeedEntropyLength)
-        SecRandomCopyBytes(kSecRandomDefault, entropy!.length, entropy!.mutableBytes.assumingMemoryBound(to: UInt8.self))
+        var entropy = Data(count: WalletHelperConstants.SeedEntropyLength)
+        let result = SecRandomCopyBytes(kSecRandomDefault, entropy.count, entropy.withUnsafeMutableBytes({ $0 }))
+    
+        // Ensure there was no error
+        assert(result == 0, "Error with SecRandomCopyBytes: \(String(result))")
         
 //        let keychain = BTCKeychain(seed: entropy as Data!, network: BTCNetwork.testnet())
         
         var time: TimeInterval = Date.timeIntervalSinceReferenceDate
         
-        let mnemonic = BTCMnemonic(entropy: entropy as Data!, password: "", wordListType: .english)
+        let mnemonic = BTCMnemonic(entropy: entropy, password: "", wordListType: .english)
         
         var phrase = ""
         
@@ -64,7 +67,7 @@ final class WalletHelper {
     /**
      @name  setKeychainData
      
-     - parameter data:          NSData
+     - parameter data:          Data
      - parameter key:           String
      - parameter authenticated: Bool
      

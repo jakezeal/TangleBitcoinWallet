@@ -11,3 +11,4 @@ struct WalletHelperConstants {
     static let SeedCreationTime = "SeedCreationTime"
     static let SecurityAttributeService = "com.jakezeal.Tangle"
 }
+

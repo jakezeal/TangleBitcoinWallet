@@ -7,11 +7,7 @@
 //
 
 extension Data {
-    
-    
     func scanValue<T>(start: Int, length: Int) -> T {
-        return self.subdata(in: start..<start+length).withUnsafeBytes { $0.pointee }
+        return subdata(in: start..<start+length).withUnsafeBytes { $0.pointee }
     }
-
-    
 }
